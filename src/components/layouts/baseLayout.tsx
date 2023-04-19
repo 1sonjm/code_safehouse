@@ -1,9 +1,9 @@
-import React from 'react'
-import Head from 'next/head'
-// import { IconSun, IconMoonStars } from '@tabler/icons-react';
-import { AppShell, Navbar, Header, Group, ActionIcon, useMantineColorScheme } from '@mantine/core';
-import { Logo } from '../logo';
 import { Add } from '@carbon/icons-react';
+import { ActionIcon, AppShell, Group, Header, useMantineColorScheme } from '@mantine/core';
+import Head from 'next/head';
+import React from 'react';
+
+import { Logo } from '../logo';
 
 type Props = {
   children: React.ReactNode
@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Layout: React.FC<Props> = ({ children, title = '호구마 머신' }) => {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
     <>
@@ -41,6 +41,6 @@ const Layout: React.FC<Props> = ({ children, title = '호구마 머신' }) => {
         {children}
       </AppShell>
     </>
-  )
-}
-export default Layout
+  );
+};
+export default Layout;

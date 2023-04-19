@@ -1,16 +1,17 @@
-import '../styles/global.css'
-import type { AppProps } from 'next/app';
-import { useState } from "react";
+import '../styles/global.css';
+
 import {
-  MantineProvider,
-  ColorSchemeProvider,
   ColorScheme,
-} from "@mantine/core";
+  ColorSchemeProvider,
+  MantineProvider
+} from '@mantine/core';
+import type { AppProps } from 'next/app';
+import { useState } from 'react';
 
 function App({ Component, pageProps }: AppProps) {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
   const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
   return (
     <ColorSchemeProvider

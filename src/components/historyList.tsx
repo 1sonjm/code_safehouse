@@ -1,4 +1,3 @@
-import { parseISO, format } from 'date-fns'
 
 export default function HistoryList() {
   // const date = parseISO(dateString)
@@ -11,5 +10,5 @@ export default function HistoryList() {
         </li>
       </ul>
     </>
-  )
+  );
 }
