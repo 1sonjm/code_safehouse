@@ -1,30 +1,46 @@
 import React from 'react'
 import Head from 'next/head'
-import NavBar from './navBar'
+// import { IconSun, IconMoonStars } from '@tabler/icons-react';
+import { AppShell, Navbar, Header, Group, ActionIcon, useMantineColorScheme } from '@mantine/core';
+import { Logo } from '../logo';
+import { Add } from '@carbon/icons-react';
 
 type Props = {
   children: React.ReactNode
   title?: string
 }
 
-const Layout: React.FC<Props> = ({ children, title = '호구마 머신' }) => (
-  <>
-    <Head>
-      <title>{title}</title>
-    </Head>
+const Layout: React.FC<Props> = ({ children, title = '호구마 머신' }) => {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
 
-    <header>
-      <img />
-      <h1>호구마 머신</h1>
-      <NavBar />
-    </header>
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
 
-    <main>{children}</main>
-
-    <footer>
-      <span>Next.js</span>
-    </footer>
-  </>
-)
-
+      <AppShell
+        padding="md"
+        header={
+          <Header height={60}>
+            <Group sx={{ height: '100%' }} px={20} position="apart">
+              <Logo colorScheme={colorScheme} />
+              <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
+                {colorScheme === 'dark' ? <Add size={'glyph'} /> : <Add size={'glyph'} />}
+              </ActionIcon>
+            </Group>
+          </Header>
+        }
+        styles={(theme) => ({
+          main: {
+            backgroundColor:
+              theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+          },
+        })}
+      >
+        {children}
+      </AppShell>
+    </>
+  )
+}
 export default Layout

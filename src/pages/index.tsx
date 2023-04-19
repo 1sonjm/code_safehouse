@@ -1,15 +1,11 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layouts/layout'
+import BaseLayout from '../components/layouts/baseLayout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import Date from '../components/date'
 
 export default function Home() {
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+    <BaseLayout title='호구마 게임'>
       <section className={utilStyles.headingMd}>
         <p>[Your Self Introduction]</p>
         <p>
@@ -29,7 +25,7 @@ export default function Home() {
           ))}
         </ul>
       </section>
-    </Layout>
+    </BaseLayout>
   )
 }
 

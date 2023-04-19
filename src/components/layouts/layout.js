@@ -5,7 +5,6 @@ import Script from 'next/script'
 import styles from './layout.module.css'
 import utilStyles from '../../styles/utils.module.css'
 import Link from 'next/link'
-import NavBar from './navBar'
 
 const name = '[Your Name]'
 export const siteTitle = 'Next.js Sample Website'
@@ -39,7 +38,6 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         <img />
         <h1>호구마 머신</h1>
-        <NavBar/>
         {/* {home ? (
           <>
             <Image

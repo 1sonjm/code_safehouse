@@ -5,9 +5,6 @@ import BaseLayout from '../../components/layouts/baseLayout'
 import HoGuMaMachine, { GameStep } from '../../lib/HoGuMaMachine'
 import WordSpinner from '../../components/wordSpinner'
 
-// 머신 생성
-const machine = new HoGuMaMachine()
-
 export default function Home() {
   // url query 처리
   const router = useRouter()
@@ -29,6 +26,7 @@ export default function Home() {
   })
 
   // 
+  const [machine, setMachine] = useState(new HoGuMaMachine(words, memberCount, startNumber))
   let rearrangeWords = machine.getRearrangeWords()
   let step = machine.getStep()
   const nextStep = async () => {
