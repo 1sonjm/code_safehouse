@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import BaseLayout from '../../components/layouts/baseLayout'
+import { useEffect, useState } from 'react'
 
-import HoGuMaMachine, { GameStep } from '../../lib/HoGuMaMachine'
+import BaseLayout from '../../components/layouts/baseLayout'
 import WordSpinner from '../../components/wordSpinner'
+import HoGuMaMachine from '../../lib/HoGuMaMachine'
 
 export default function Home() {
   // url query 처리
@@ -25,8 +25,8 @@ export default function Home() {
     // machine.changeWords(words, memberCount, startNumber)
   })
 
-  // 
-  const [machine, setMachine] = useState(new HoGuMaMachine(words, memberCount, startNumber))
+  // 호구마 머신 초기화
+  const [machine] = useState(new HoGuMaMachine(words, memberCount, startNumber))
   let rearrangeWords = machine.getRearrangeWords()
   let step = machine.getStep()
   const nextStep = async () => {

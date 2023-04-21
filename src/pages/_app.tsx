@@ -1,14 +1,14 @@
-import '../styles/global.scss';
+import '../styles/global.scss'
 
-import { LogoGithub, Moon, Sun } from '@carbon/icons-react';
-import {ActionIcon, AppShell, Burger, ColorScheme, ColorSchemeProvider, Container, createStyles, Group, Header, MantineProvider, rem } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import type { AppProps } from 'next/app';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Logo } from 'src/components/logo';
+import { LogoGithub, Moon, Sun } from '@carbon/icons-react'
+import {ActionIcon, AppShell, Burger, ColorScheme, ColorSchemeProvider, Container, createStyles, Group, Header, MantineProvider, rem } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import type { AppProps } from 'next/app'
+import Link from 'next/link'
+import { useState } from 'react'
+import { Logo } from 'src/components/logo'
 
-const HEADER_HEIGHT = rem(56);
+const HEADER_HEIGHT = rem(56)
 const useStyles = createStyles((theme) => ({
   inner: {
     display: 'flex',
@@ -67,23 +67,23 @@ const useStyles = createStyles((theme) => ({
       color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
     },
   },
-}));
+}))
 
 function App({ Component, pageProps }: AppProps) {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light')
   const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
   // const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles()
 
   const [siteLinks] = useState([
     { label: '소개', link: '/' },
     { label: '게임', link: '/playground/new' },
     { label: '진행이력', link: '/playground/history' },
-  ]);
-  const [active, setActive] = useState(siteLinks[0].link);
-  const [opened, { toggle }] = useDisclosure(false);
+  ])
+  const [active, setActive] = useState(siteLinks[0].link)
+  const [opened, { toggle }] = useDisclosure(false)
 
   return (
     <ColorSchemeProvider
@@ -112,7 +112,7 @@ function App({ Component, pageProps }: AppProps) {
                       href={link.link}
                       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
                       onClick={(event) => {
-                        setActive(link.link);
+                        setActive(link.link)
                       }}
                     >
                       {link.label}
@@ -153,7 +153,7 @@ function App({ Component, pageProps }: AppProps) {
         </AppShell>
       </MantineProvider>
     </ColorSchemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App

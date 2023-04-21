@@ -1,5 +1,5 @@
-import { ColorScheme, em } from '@mantine/core';
-import React from 'react';
+import { ColorScheme, em } from '@mantine/core'
+import React from 'react'
 
 export function Logo({ size, colorScheme }: { size: number, colorScheme: ColorScheme }) {
   return (
@@ -21,5 +21,5 @@ export function Logo({ size, colorScheme }: { size: number, colorScheme: ColorSc
       <path d="M10.57 96.53c-.2 5.1 7.06 15.42 31.67 15.98c21.28.49 29.52-10 29.61-14.51c.1-4.61-4.22-4.71-7.26-7.45c-3.04-2.75-2.84-4.71-10.1-7.06c-6.48-2.1-17.06-2.65-23.24-.98s-4.61 3.73-8.63 4.9s-11.85 3.82-12.05 9.12z" fill="#fad675" />
     </svg>
 
-  );
+  )
 }

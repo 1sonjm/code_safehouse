@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import HistoryList from 'src/components/historyList';
+import Link from 'next/link'
+import HistoryList from 'src/components/historyList'
 
-import BaseLayout from '../../components/layouts/baseLayout';
+import BaseLayout from '../../components/layouts/baseLayout'
 
 export default function Home() {
   return (
@@ -9,5 +9,5 @@ export default function Home() {
       <Link href={'/playground/new'}>새로운 게임</Link>
       <HistoryList/>
     </BaseLayout>
-  );
+  )
 }

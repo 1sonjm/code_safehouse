@@ -39,9 +39,9 @@ export default class HoGuMaMachine {
    * 게임 설정값 오류 확인
    */
   private updateGameSetting (
-      words: string | null = this.gameSetting.words || '호박고구마',
-      memberCount: number | null = this.gameSetting.memberCount || 2,
-      startNumber: number | null = this.gameSetting.startIndex || 1,
+    words: string | null = this.gameSetting.words || '호박고구마',
+    memberCount: number | null = this.gameSetting.memberCount || 2,
+    startNumber: number | null = this.gameSetting.startIndex || 1
   ) {
     this.reset()
 
@@ -104,19 +104,19 @@ export default class HoGuMaMachine {
    */
   private findRepeatingWords(targetWords: string[]): string[] | null {
     for (let i = 0; i < targetWords.length; i++) {
-      let checkedWords = targetWords.slice(0, i + 1);
-      let repeated = true;
+      let checkedWords = targetWords.slice(0, i + 1)
+      let repeated = true
       for (let j = 0; j < targetWords.length; j += checkedWords.length) {
         if (targetWords.slice(j, j + checkedWords.length).join('') !== checkedWords.join('')) {
-          repeated = false;
-          break;
+          repeated = false
+          break
         }
       }
       if (repeated) {
-        return checkedWords;
+        return checkedWords
       }
     }
-    return null;
+    return null
   }
 
   /**
@@ -214,7 +214,7 @@ export default class HoGuMaMachine {
     const step:GameStep = {
       char: this.gameSetting.words[this.wordsIndex],
       isMyTurn: false,
-      totalCount: this.count
+      totalCount: this.count,
     }
 
     if (this.count % this.gameSetting.memberCount - 1 === 0) {

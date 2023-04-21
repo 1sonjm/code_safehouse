@@ -1,8 +1,8 @@
-import { Button } from '@mantine/core';
-import Link from 'next/link';
+import { Button } from '@mantine/core'
+import Link from 'next/link'
 
-import BaseLayout from '../components/layouts/baseLayout';
-import utilStyles from '../styles/utils.module.css';
+import BaseLayout from '../components/layouts/baseLayout'
+import utilStyles from '../styles/utils.module.css'
 
 export default function Home() {
   return (
@@ -28,12 +28,12 @@ export default function Home() {
         </ul>
       </section>
     </BaseLayout>
-  );
+  )
 }
 
 export async function getStaticProps() {
   return {
     props: {
     },
-  };
+  }
 }
