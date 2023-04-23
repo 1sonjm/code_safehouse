@@ -1,0 +1,36 @@
+// color.scss
+
+$theme-light-background-color: #fff;
+$theme-light-text-color: #000;
+$theme-light-button-text-color: #000000;
+$theme-light-button-background-color: #ead0ff;
+
+$theme-dark-background-color: #111;
+$theme-dark-text-color: #fff;
+$theme-dark-button-text-color: #fff;
+$theme-dark-button-background-color: #453a4d;
+
+//themes.scss
+
+html[data-theme="light"] {
+  --color-text: #{$theme-light-text-color};
+  --color-background: #{$theme-light-background-color};
+  --color-button-text : #{$theme-light-button-text-color};
+  --color-button-background : #{$theme-light-button-background-color};
+}
+html[data-theme="dark"] {
+  --color-text: #{$theme-dark-text-color};
+  --color-background: #{$theme-dark-background-color};
+  --color-button-text : #{$theme-dark-button-text-color};
+  --color-button-background : #{$theme-dark-button-background-color};
+}
+*{
+  transition: 0.3s ease-in;
+  transition-property: background, color;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+button{
+  color: var(--color-button-text);
+  background-color: var(--color-button-background);
+}

@@ -1,0 +1,30 @@
+.toggle{
+  cursor: pointer;
+  // overflow: hidden;
+  position: relative;
+  input{
+    height: 0;
+    width: 0;
+    display: none;
+    & ~ .lightIcon{
+      animation: 1s up forwards;
+    }
+    & ~ .darkIcon{
+      animation: 1s down forwards;
+    }
+    &:checked{
+      & ~ .lightIcon{
+        top: 10px;
+        animation: 1s down forwards;
+      }
+      & ~ .darkIcon{
+        animation: 1s up forwards;
+      }
+    }
+  }
+  svg{
+    position: absolute;
+    display: block;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,11 +1,12 @@
 import '../styles/global.scss'
 
-import { LogoGithub, Moon, Sun } from '@carbon/icons-react'
+import { LogoGithub } from '@carbon/icons-react'
 import {ActionIcon, AppShell, Burger, ColorScheme, ColorSchemeProvider, Container, createStyles, Group, Header, MantineProvider, rem } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
 import { useState } from 'react'
+import DarkModeButton from 'src/components/DarkModeToggle'
 import { Logo } from 'src/components/logo'
 
 const HEADER_HEIGHT = rem(56)
@@ -90,15 +91,7 @@ function App({ Component, pageProps }: AppProps) {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <MantineProvider
-        theme={{
-          colors: {
-            primary: ['#290a22', '#521444', '#7b1e65', '#a42887', '#cd32a9', '#d75bba', '#e184cb', '#ebaddd', '#f5d6ee', '#faeaf6'],
-            sub: ['#F0BBDD', '#ED9BCF', '#EC7CC3', '#ED5DB8', '#F13EAF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374'],
-            point: ['#F0BBDD', '#ED9BCF', '#EC7CC3', '#ED5DB8', '#F13EAF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374'],
-          },
-          primaryColor: 'primary',
-        }}>
+      <MantineProvider>
         <AppShell
           padding="md"
           header={
@@ -136,7 +129,7 @@ function App({ Component, pageProps }: AppProps) {
                     <LogoGithub />
                   </ActionIcon>
                   <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
-                    {colorScheme === 'dark' ? <Sun/> : <Moon/>}
+                    <DarkModeButton />
                   </ActionIcon>
                 </Group>
               </Container>
