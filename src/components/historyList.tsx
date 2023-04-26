@@ -1,14 +1,22 @@
+import { SimpleGrid } from '@mantine/core'
+import { useState } from 'react'
 
-export default function HistoryList() {
-  // const date = parseISO(dateString)
+import HistoryCard, { History } from './hisotryCard'
+
+export default function HistoryList({ column=4 }: { column?: number }) {
+  const [hisotryList] = useState<Array<History>>([{words: '호구마', memberCount: 2, startNumber: 1}])
 
   return (
     <>
-      <ul>
-        <li>
-          12123123
-        </li>
-      </ul>
+      <SimpleGrid cols={column}>
+        <HistoryCard />
+        {hisotryList.map((value, index)=>(
+          <HistoryCard
+            key={index}
+            hisotry={value}
+          />
+        ))}
+      </SimpleGrid>
     </>
   )
 }
