@@ -116,7 +116,7 @@ function App({ Component, pageProps }: AppProps) {
 
                 <Group>
                   <Link href="/" className={'titleLogo'}>
-                    <Logo size={30} colorScheme={colorScheme} />
+                    <Logo size={30} />
                     <h1>호구마</h1>
                   </Link>
                 </Group>

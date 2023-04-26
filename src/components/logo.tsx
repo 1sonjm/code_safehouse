@@ -1,7 +1,7 @@
-import { ColorScheme, em } from '@mantine/core'
+import { em } from '@mantine/core'
 import React from 'react'
 
-export function Logo({ size, colorScheme }: { size: number, colorScheme: ColorScheme }) {
+export function Logo({ size=24 }: { size: number }) {
   return (
     <svg
       width={em(size)}

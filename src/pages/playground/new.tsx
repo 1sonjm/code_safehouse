@@ -1,7 +1,9 @@
 import { ParsedUrlQueryInput } from 'node:querystring'
 
+import { Button, Center, Container, NumberInput, Space, TextInput } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { Logo } from 'src/components/logo'
 
 import BaseLayout from '../../components/layouts/baseLayout'
 
@@ -15,8 +17,8 @@ export default function Home() {
   const router = useRouter()
 
   const [words, setWords] = useState('')
-  const [memberCount, setMemberCount] = useState(2)
-  const [startNumber, setStartNumber] = useState(1)
+  const [memberCount, setMemberCount] = useState<number | ''>(2)
+  const [startNumber, setStartNumber] = useState<number | ''>(1)
 
   const generateNewGame = () => {
     alert('게임을 생성합니다')
@@ -24,10 +26,10 @@ export default function Home() {
     if (words?.length){
       query.words = words
     }
-    if (memberCount >= 2){
+    if (memberCount != '' && memberCount >= 2){
       query.memberCount = memberCount
     }
-    if (startNumber >= 1){
+    if (startNumber != '' && startNumber >= 1){
       query.startNumber = startNumber
     }
 
@@ -39,25 +41,44 @@ export default function Home() {
 
   return (
     <BaseLayout title='호구마 게임'>
-      <input
-        type="text"
-        value={words}
-        onChange={(e) => setWords(e.target.value)}
-      />
-      <input
-        type="number"
-        value={memberCount}
-        onChange={(e) => setMemberCount(Number(e.target.value))}
-      />
-      <input
-        type="number"
-        value={startNumber}
-        onChange={(e) => setStartNumber(Number(e.target.value))}
-      />
-
-      <button onClick={generateNewGame}>
-        생성
-      </button>
+      <Container size="20rem">
+        <TextInput
+          placeholder="제시어"
+          label="제시어"
+          withAsterisk
+          value={words} onChange={(event) => setWords(event.currentTarget.value)}
+        />
+        <Space h="md" />
+        <NumberInput
+          defaultValue={2}
+          placeholder="참여 인원"
+          label="참여 인원"
+          withAsterisk
+          value={memberCount} onChange={setMemberCount}
+          max={120}
+          min={2}
+        />
+        <Space h="md" />
+        <NumberInput
+          defaultValue={1}
+          placeholder="시작 순번"
+          label="시작 순번"
+          withAsterisk
+          value={startNumber} onChange={setStartNumber}
+          max={memberCount || 2}
+          min={1}
+        />
+        <Space h="md" />
+        <Center>
+          <Button
+            leftIcon={<Logo size={30} />}
+            onClick={generateNewGame}
+            disabled={words.length < 1}
+          >
+            생성
+          </Button>
+        </Center>
+      </Container>
     </BaseLayout>
   )
 }
