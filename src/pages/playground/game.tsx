@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import BaseLayout from '../../components/layouts/baseLayout'
-import WordSpinner from '../../components/wordSpinner'
+import WordSpinner from '../../components/WordSpinner'
 import HoGuMaMachine from '../../lib/HoGuMaMachine'
 
 export default function Home() {

@@ -3,7 +3,7 @@ import { ParsedUrlQueryInput } from 'node:querystring'
 import { Button, Center, Container, NumberInput, Space, TextInput } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { Logo } from 'src/components/logo'
+import { Logo } from 'src/components/Logo'
 
 import BaseLayout from '../../components/layouts/baseLayout'
 
@@ -43,7 +43,7 @@ export default function Home() {
     <BaseLayout title='호구마 게임'>
       <Container size="20rem">
         <TextInput
-          placeholder="제시어"
+          placeholder="호박고구마"
           label="제시어"
           withAsterisk
           value={words} onChange={(event) => setWords(event.currentTarget.value)}
@@ -73,7 +73,7 @@ export default function Home() {
           <Button
             leftIcon={<Logo size={30} />}
             onClick={generateNewGame}
-            disabled={words.length < 1}
+            // disabled={words.length < 1}
           >
             생성
           </Button>
