@@ -3,9 +3,9 @@ import { ParsedUrlQueryInput } from 'node:querystring'
 import { Button, Center, Container, NumberInput, Space, TextInput } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { Logo } from 'src/components/Logo'
 
 import BaseLayout from '../../components/layouts/baseLayout'
+import { Logo } from '../../components/Logo'
 
 interface Query extends ParsedUrlQueryInput{
   words?: string,

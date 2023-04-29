@@ -6,8 +6,9 @@ import { useDisclosure } from '@mantine/hooks'
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
 import { useState } from 'react'
-import DarkModeButton from 'src/components/DarkModeToggle'
-import { Logo } from 'src/components/Logo'
+
+import DarkModeButton from '../components/DarkModeToggle'
+import { Logo } from '../components/Logo'
 
 const HEADER_HEIGHT = rem(56)
 const useStyles = createStyles((theme) => ({
