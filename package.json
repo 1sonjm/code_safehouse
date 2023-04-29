@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"build_ssg": "next build && next export",
-		"test": "",
+		"test": "eslint src/**/*.tsx && eslint src/**/*.ts",
 		"prepare": "husky install",
 		"lint-staged": "lint-staged"
 	},
@@ -30,7 +30,6 @@
 		"date-fns": "^2.29.3",
 		"dayjs": "^1.11.7",
 		"embla-carousel-react": "^7.1.0",
-		"eslint": "8.38.0",
 		"eslint-config-next": "13.3.0",
 		"glob-parent": ">=5.1.2",
 		"next": "13.3.0",
@@ -44,6 +43,7 @@
 	},
 	"devDependencies": {
 		"@types/carbon__icons-react": "^11.16.0",
+		"eslint": "^8.39.0",
 		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"eslint-plugin-unused-imports": "^2.0.0",
 		"husky": "^8.0.0",

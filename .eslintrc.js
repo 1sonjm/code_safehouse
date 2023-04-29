@@ -4,6 +4,9 @@ module.exports = {
 		'eslint-plugin-simple-import-sort',
 		'unused-imports',
 	],
+	ignorePatterns: [
+		'**/node_modules/*.js',
+	],
 	rules: {
 		// 익명의 기본 내보내기를 금지합니다.
 		'import/no-anonymous-default-export': ['error', {

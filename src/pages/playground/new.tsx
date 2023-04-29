@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 import BaseLayout from '../../components/layouts/baseLayout'
-import Logo from '../../components/Logo'
+import LogoIcon from '../../components/LogoIcon'
 
 interface Query extends ParsedUrlQueryInput{
   words?: string,
@@ -71,7 +71,7 @@ export default function Home() {
 				<Space h="md" />
 				<Center>
 					<Button
-						leftIcon={<Logo size={30} />}
+						leftIcon={<LogoIcon size={30} />}
 						onClick={generateNewGame}
 						// disabled={words.length < 1}
 					>

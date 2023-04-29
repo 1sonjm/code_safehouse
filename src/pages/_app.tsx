@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 import DarkModeButton from '../components/DarkModeToggle'
-import Logo from '../components/Logo'
+import LogoIcon from '../components/LogoIcon'
 
 const HEADER_HEIGHT = rem(56)
 const useStyles = createStyles((theme) => ({
@@ -120,7 +120,7 @@ function App({ Component, pageProps }: AppProps) {
 
 								<Group>
 									<Link href="/" className={'titleLogo'}>
-										<Logo size={30} />
+										<LogoIcon size={30} />
 									</Link>
 								</Group>
 
