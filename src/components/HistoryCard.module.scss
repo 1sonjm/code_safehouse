@@ -2,16 +2,15 @@
 }
 
 .card {
-  height: 10rem;
-  color: var(--color-text);
-  background-color: var(--color-background-gray2);
-  .game-option{
-    .label{
-      
-    }
-    .value{
-      background-color: var(--color-text);
-      color: var(--color-background);
-    }
-  }
+	height: 10rem;
+	color: var(--color-text);
+	background-color: var(--color-background-gray2);
+	.game-option{
+		.label{
+		}
+		.value{
+			background-color: var(--color-text);
+			color: var(--color-background);
+		}
+	}
 }

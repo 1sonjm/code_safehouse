@@ -1,22 +1,18 @@
 import { GameStep } from '../lib/HoGuMaMachine'
 
-type Props = {
+export default function WordSpinner({words, step}: {
   words: string
   step: GameStep
+}) {
+
+	return (
+		<>
+			<div>
+				{words}
+			</div>
+			<p>
+				{step.char} / {step.isMyTurn ? 'O' : 'X'}
+			</p>
+		</>
+	)
 }
-
-const WordSpinner: React.FC<Props> = ({words, step}) =>{
-
-  return (
-    <>
-      <div>
-        {words}
-      </div>
-      <p>
-        {step.char} / {step.isMyTurn ? 'O' : 'X'}
-      </p>
-    </>
-  )
-}
-
-export default WordSpinner

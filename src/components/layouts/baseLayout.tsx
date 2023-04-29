@@ -7,14 +7,14 @@ type Props = {
 }
 
 const Layout: React.FC<Props> = ({ children, title = '호구마 머신' }) => {
-  return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+	return (
+		<>
+			<Head>
+				<title>{title}</title>
+			</Head>
 
-      {children}
-    </>
-  )
+			{children}
+		</>
+	)
 }
 export default Layout

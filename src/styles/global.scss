@@ -3,37 +3,37 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  line-height: 1.6;
-  font-size: 18px;
+	padding: 0;
+	margin: 0;
+	line-height: 1.6;
+	font-size: 18px;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 a {
-  color: #0070f3;
-  text-decoration: none;
-  &:hover{
-    text-decoration: none;
-    font-weight: 600;
-  }
+	color: #0070f3;
+	text-decoration: none;
+	&:hover{
+		text-decoration: none;
+		font-weight: 600;
+	}
 }
 
 img {
-  max-width: 100%;
-  display: block;
+	max-width: 100%;
+	display: block;
 }
 
 .titleLogo {
-  display: inline-flex;
-  align-items: center;
-  font-weight: 800;
-  >h1{
-    margin: 0 0.2em;
-    font-size: 1.4em;
-    color: #25003f;
-  }
+	display: inline-flex;
+	align-items: center;
+	font-weight: 800;
+	>h1{
+		margin: 0 0.2em;
+		font-size: 1.4em;
+		color: #25003f;
+	}
 }

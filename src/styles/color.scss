@@ -12,43 +12,43 @@ $theme-dark-button-background-color: #453a4d;
 
 //themes.scss
 :root {
-  --color-text: #{$theme-light-text-color};
-  --color-background: #{$theme-light-background-color};
-  --color-background-gray1: darken($theme-light-background-color, 10%);
-  --color-background-gray2: darken($theme-light-background-color, 20%);
-  --color-background-gray3: darken($theme-light-background-color, 30%);
-  --color-background-gray4: darken($theme-light-background-color, 40%);
-  --color-background-gray5: darken($theme-light-background-color, 50%);
-  --color-background-gray6: darken($theme-light-background-color, 60%);
-  --color-background-gray7: darken($theme-light-background-color, 70%);
-  --color-background-gray8: darken($theme-light-background-color, 80%);
-  --color-background-gray9: darken($theme-light-background-color, 90%);
-  --color-button-text : #{$theme-light-button-text-color};
-  --color-button-background : #{$theme-light-button-background-color};
+	--color-text: #{$theme-light-text-color};
+	--color-background: #{$theme-light-background-color};
+	--color-background-gray1: darken($theme-light-background-color, 10%);
+	--color-background-gray2: darken($theme-light-background-color, 20%);
+	--color-background-gray3: darken($theme-light-background-color, 30%);
+	--color-background-gray4: darken($theme-light-background-color, 40%);
+	--color-background-gray5: darken($theme-light-background-color, 50%);
+	--color-background-gray6: darken($theme-light-background-color, 60%);
+	--color-background-gray7: darken($theme-light-background-color, 70%);
+	--color-background-gray8: darken($theme-light-background-color, 80%);
+	--color-background-gray9: darken($theme-light-background-color, 90%);
+	--color-button-text : #{$theme-light-button-text-color};
+	--color-button-background : #{$theme-light-button-background-color};
 }
 [data-theme="dark"] {
-  --color-text: #{$theme-dark-text-color};
-  --color-background: #{$theme-dark-background-color};
-  --color-background-gray1: lighten($theme-light-background-color, 10%);
-  --color-background-gray2: lighten($theme-light-background-color, 20%);
-  --color-background-gray3: lighten($theme-light-background-color, 30%);
-  --color-background-gray4: lighten($theme-light-background-color, 40%);
-  --color-background-gray5: lighten($theme-light-background-color, 50%);
-  --color-background-gray6: lighten($theme-light-background-color, 60%);
-  --color-background-gray7: lighten($theme-light-background-color, 70%);
-  --color-background-gray8: lighten($theme-light-background-color, 80%);
-  --color-background-gray9: lighten($theme-light-background-color, 90%);
-  --color-button-text : #{$theme-dark-button-text-color};
-  --color-button-background : #{$theme-dark-button-background-color};
+	--color-text: #{$theme-dark-text-color};
+	--color-background: #{$theme-dark-background-color};
+	--color-background-gray1: lighten($theme-light-background-color, 10%);
+	--color-background-gray2: lighten($theme-light-background-color, 20%);
+	--color-background-gray3: lighten($theme-light-background-color, 30%);
+	--color-background-gray4: lighten($theme-light-background-color, 40%);
+	--color-background-gray5: lighten($theme-light-background-color, 50%);
+	--color-background-gray6: lighten($theme-light-background-color, 60%);
+	--color-background-gray7: lighten($theme-light-background-color, 70%);
+	--color-background-gray8: lighten($theme-light-background-color, 80%);
+	--color-background-gray9: lighten($theme-light-background-color, 90%);
+	--color-button-text : #{$theme-dark-button-text-color};
+	--color-button-background : #{$theme-dark-button-background-color};
 }
 
 *{
-  transition: 0.3s ease-in;
-  transition-property: background, color;
-  color: var(--color-text);
-  background-color: var(--color-background);
+	transition: 0.3s ease-in;
+	transition-property: background, color;
+	color: var(--color-text);
+	background-color: var(--color-background);
 }
 button{
-  color: var(--color-button-text);
-  background-color: var(--color-button-background);
+	color: var(--color-button-text);
+	background-color: var(--color-button-background);
 }
