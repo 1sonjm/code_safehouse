@@ -8,9 +8,9 @@ import BaseLayout from '../../components/layouts/BaseLayout'
 import LogoIcon from '../../components/LogoIcon'
 
 interface Query extends ParsedUrlQueryInput{
-  words?: string,
-  memberCount?: number,
-  startNumber?: number,
+	words?: string,
+	memberCount?: number,
+	startNumber?: number,
 }
 
 export default function Home() {

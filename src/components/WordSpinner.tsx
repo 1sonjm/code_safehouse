@@ -1,8 +1,8 @@
 import { GameStep } from '../lib/HoGuMaMachine'
 
 export default function WordSpinner({words, step}: {
-  words: string
-  step: GameStep
+	words: string
+	step: GameStep
 }) {
 
 	return (

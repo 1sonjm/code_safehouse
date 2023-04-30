@@ -2,7 +2,7 @@ import { em } from '@mantine/core'
 import React from 'react'
 
 export default function LogoIcon({ size=24 }: {
-  size: number
+	size: number
 }) {
 	return (
 		<svg

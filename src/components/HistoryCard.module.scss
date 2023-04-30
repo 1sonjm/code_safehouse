@@ -1,16 +1,41 @@
+@use "../styles/mixin.scss" as *;
+
 .newHistory{
 }
 
 .card {
+  @include themeChange;
+  position: relative;
 	height: 10rem;
 	color: var(--color-text);
-	background-color: var(--color-background-gray2);
-	.game-option{
+  border-radius: 0.5rem;
+  font-weight: 400;
+  box-shadow: 0 0.3rem 0.25rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &:hover{
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    top: 0.1rem;
+  }
+	.gameOption{
 		.label{
+      margin-right: 0.2em;
 		}
 		.value{
-			background-color: var(--color-text);
-			color: var(--color-background);
+      background: var(--color-point-3);
+      border-radius: 0.2em;
+      padding: 0 0.3rem;
 		}
 	}
+}
+
+.new{
+	background-color: var(--color-gray10-8);
+  color: var(--color-gray10-1);
+}
+.prev{
+	background-color: var(--color-gray10-1);
+  color: var(--color-gray10-10);
 }

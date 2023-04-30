@@ -1,54 +1,70 @@
 // color.scss
+$theme-light-gray-color: hsl(0, 0%, 100%);
+$theme-light-primary-color: hsl(260, 100%, 90%);
+$theme-light-point-color: hsl(216, 100%, 90%);
 
-$theme-light-background-color: #fff;
-$theme-light-text-color: #000;
-$theme-light-button-text-color: #000000;
-$theme-light-button-background-color: #ead0ff;
-
-$theme-dark-background-color: #111;
-$theme-dark-text-color: #fff;
-$theme-dark-button-text-color: #fff;
-$theme-dark-button-background-color: #453a4d;
+$theme-dark-gray-color: hsl(0, 0%, 0%);
+$theme-dark-primary-color: hsl(260, 40%, 30%);
+$theme-dark-point-color: hsl(216, 40%, 30%);
 
 //themes.scss
 :root {
-	--color-text: #{$theme-light-text-color};
-	--color-background: #{$theme-light-background-color};
-	--color-background-gray1: darken($theme-light-background-color, 10%);
-	--color-background-gray2: darken($theme-light-background-color, 20%);
-	--color-background-gray3: darken($theme-light-background-color, 30%);
-	--color-background-gray4: darken($theme-light-background-color, 40%);
-	--color-background-gray5: darken($theme-light-background-color, 50%);
-	--color-background-gray6: darken($theme-light-background-color, 60%);
-	--color-background-gray7: darken($theme-light-background-color, 70%);
-	--color-background-gray8: darken($theme-light-background-color, 80%);
-	--color-background-gray9: darken($theme-light-background-color, 90%);
-	--color-button-text : #{$theme-light-button-text-color};
-	--color-button-background : #{$theme-light-button-background-color};
-}
-[data-theme="dark"] {
-	--color-text: #{$theme-dark-text-color};
-	--color-background: #{$theme-dark-background-color};
-	--color-background-gray1: lighten($theme-light-background-color, 10%);
-	--color-background-gray2: lighten($theme-light-background-color, 20%);
-	--color-background-gray3: lighten($theme-light-background-color, 30%);
-	--color-background-gray4: lighten($theme-light-background-color, 40%);
-	--color-background-gray5: lighten($theme-light-background-color, 50%);
-	--color-background-gray6: lighten($theme-light-background-color, 60%);
-	--color-background-gray7: lighten($theme-light-background-color, 70%);
-	--color-background-gray8: lighten($theme-light-background-color, 80%);
-	--color-background-gray9: lighten($theme-light-background-color, 90%);
-	--color-button-text : #{$theme-dark-button-text-color};
-	--color-button-background : #{$theme-dark-button-background-color};
+	--color-gray10-0: #{$theme-light-gray-color};
+	--color-gray10-1: #{darken($theme-light-gray-color, 4%)};
+	--color-gray10-2: #{darken($theme-light-gray-color, 12%)};
+	--color-gray10-3: #{darken($theme-light-gray-color, 30%)};
+	--color-gray10-4: #{darken($theme-light-gray-color, 40%)};
+	--color-gray10-5: #{darken($theme-light-gray-color, 50%)};
+	--color-gray10-6: #{darken($theme-light-gray-color, 60%)};
+	--color-gray10-7: #{darken($theme-light-gray-color, 70%)};
+	--color-gray10-8: #{darken($theme-light-gray-color, 80%)};
+	--color-gray10-9: #{darken($theme-light-gray-color, 90%)};
+	--color-gray10-10: #{darken($theme-light-gray-color, 95%)};
+
+	--color-primary5-0: #{$theme-light-primary-color};
+	--color-primary5-1: #{darken($theme-light-primary-color, 5%)};
+	--color-primary5-2: #{darken($theme-light-primary-color, 10%)};
+	--color-primary5-3: #{darken($theme-light-primary-color, 20%)};
+	--color-primary5-4: #{darken($theme-light-primary-color, 30%)};
+	--color-primary5-5: #{darken($theme-light-primary-color, 40%)};
+
+	--color-point5-0: #{$theme-light-point-color};
+	--color-point5-1: #{darken($theme-light-point-color, 5%)};
+	--color-point5-2: #{darken($theme-light-point-color, 10%)};
+	--color-point5-3: #{darken($theme-light-point-color, 20%)};
+	--color-point5-4: #{darken($theme-light-point-color, 30%)};
+	--color-point5-5: #{darken($theme-light-point-color, 40%)};
+
+  &[data-dark] {
+    --color-gray10-0: #{$theme-dark-gray-color};
+    --color-gray10-1: #{lighten($theme-dark-gray-color, 10%)};
+    --color-gray10-2: #{lighten($theme-dark-gray-color, 20%)};
+    --color-gray10-3: #{lighten($theme-dark-gray-color, 30%)};
+    --color-gray10-4: #{lighten($theme-dark-gray-color, 40%)};
+    --color-gray10-5: #{lighten($theme-dark-gray-color, 50%)};
+    --color-gray10-6: #{lighten($theme-dark-gray-color, 60%)};
+    --color-gray10-7: #{lighten($theme-dark-gray-color, 70%)};
+    --color-gray10-8: #{lighten($theme-dark-gray-color, 80%)};
+    --color-gray10-9: #{lighten($theme-dark-gray-color, 90%)};
+    --color-gray10-10: #{lighten($theme-dark-gray-color, 95%)};
+
+    --color-primary5-0: #{$theme-dark-primary-color};
+    --color-primary5-1: #{lighten($theme-dark-primary-color, 5%)};
+    --color-primary5-2: #{lighten($theme-dark-primary-color, 10%)};
+    --color-primary5-3: #{lighten($theme-dark-primary-color, 20%)};
+    --color-primary5-4: #{lighten($theme-dark-primary-color, 30%)};
+    --color-primary5-5: #{lighten($theme-dark-primary-color, 40%)};
+
+    --color-point5-0: #{$theme-dark-point-color};
+    --color-point5-1: #{lighten($theme-dark-point-color, 5%)};
+    --color-point5-2: #{lighten($theme-dark-point-color, 10%)};
+    --color-point5-3: #{lighten($theme-dark-point-color, 20%)};
+    --color-point5-4: #{lighten($theme-dark-point-color, 30%)};
+    --color-point5-5: #{lighten($theme-dark-point-color, 40%)};
+  }
 }
 
-*{
-	transition: 0.3s ease-in;
-	transition-property: background, color;
-	color: var(--color-text);
-	background-color: var(--color-background);
-}
 button{
-	color: var(--color-button-text);
-	background-color: var(--color-button-background);
+	color: var(--color-gray10-10);
+	background-color: var(--color-primary5-0);
 }
