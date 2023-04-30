@@ -2,7 +2,7 @@ import { AddFilled } from '@carbon/icons-react'
 import { Card, Group, Stack, Text } from '@mantine/core'
 import Link from 'next/link'
 
-import classes from './historyCard.module.scss'
+import classes from './HistoryCard.module.scss'
 
 export interface History {
   words: string
