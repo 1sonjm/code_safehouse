@@ -1,7 +1,7 @@
 import { Container, Divider } from '@mantine/core'
 import Link from 'next/link'
 
-import BaseLayout from '../components/layouts/baseLayout'
+import BaseLayout from '../components/layouts/BaseLayout'
 import utilStyles from '../styles/utils.module.css'
 
 export default function Home() {

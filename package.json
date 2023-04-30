@@ -4,11 +4,11 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"build_ssg": "next build && next export",
 		"test": "eslint src/**/*.tsx && eslint src/**/*.ts",
+		"build": "npm run test && next build",
+		"build_ssg": "npm run test && next build && next export",
 		"prepare": "husky install",
 		"lint-staged": "lint-staged"
 	},

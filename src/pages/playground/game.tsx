@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-import BaseLayout from '../../components/layouts/baseLayout'
+import BaseLayout from '../../components/layouts/BaseLayout'
 import WordSpinner from '../../components/WordSpinner'
 import HoGuMaMachine from '../../lib/HoGuMaMachine'
 
