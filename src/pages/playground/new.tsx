@@ -4,8 +4,8 @@ import { Button, Center, Container, NumberInput, Space, TextInput } from '@manti
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import BaseLayout from '../../components/layouts/baseLayout'
-import LogoIcon from '../../components/logoIcon'
+import BaseLayout from '../../components/layouts/BaseLayout'
+import LogoIcon from '../../components/LogoIcon'
 
 interface Query extends ParsedUrlQueryInput{
   words?: string,
