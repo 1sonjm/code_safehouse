@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 import DarkModeButton from '../components/DarkModeToggle'
-import LogoIcon from '../components/LogoIcon'
+import LogoIcon from '../components/logoIcon'
 
 const HEADER_HEIGHT = rem(56)
 const useStyles = createStyles((theme) => ({

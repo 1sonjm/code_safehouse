@@ -1,7 +1,7 @@
 import { SimpleGrid } from '@mantine/core'
 import { useState } from 'react'
 
-import HistoryCard, { History } from './HistoryCard'
+import HistoryCard, { History } from './historyCard'
 
 
 export default function HistoryList({ column=4 }: {
