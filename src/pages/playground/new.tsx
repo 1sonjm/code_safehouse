@@ -45,15 +45,13 @@ export default function Home() {
 				<TextInput
 					placeholder="호박고구마"
 					label="제시어"
-					withAsterisk
 					value={words} onChange={(event) => setWords(event.currentTarget.value)}
 				/>
 				<Space h="md" />
 				<NumberInput
 					defaultValue={2}
-					placeholder="참여 인원"
+					placeholder="2"
 					label="참여 인원"
-					withAsterisk
 					value={memberCount} onChange={setMemberCount}
 					max={120}
 					min={2}
@@ -61,9 +59,8 @@ export default function Home() {
 				<Space h="md" />
 				<NumberInput
 					defaultValue={1}
-					placeholder="시작 순번"
+					placeholder="1"
 					label="시작 순번"
-					withAsterisk
 					value={startNumber} onChange={setStartNumber}
 					max={memberCount || 2}
 					min={1}

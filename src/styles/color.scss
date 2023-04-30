@@ -1,11 +1,11 @@
 // color.scss
 $theme-light-gray-color: hsl(0, 0%, 100%);
-$theme-light-primary-color: hsl(260, 100%, 90%);
-$theme-light-point-color: hsl(216, 100%, 90%);
+$theme-light-primary-color: hsl(260, 100%, 96%);
+$theme-light-point-color: hsl(216, 100%, 96%);
 
 $theme-dark-gray-color: hsl(0, 0%, 0%);
-$theme-dark-primary-color: hsl(260, 40%, 30%);
-$theme-dark-point-color: hsl(216, 40%, 30%);
+$theme-dark-primary-color: hsl(260, 40%, 20%);
+$theme-dark-point-color: hsl(216, 40%, 20%);
 
 //themes.scss
 :root {
@@ -35,33 +35,33 @@ $theme-dark-point-color: hsl(216, 40%, 30%);
 	--color-point5-4: #{darken($theme-light-point-color, 30%)};
 	--color-point5-5: #{darken($theme-light-point-color, 40%)};
 
-  &[data-dark] {
-    --color-gray10-0: #{$theme-dark-gray-color};
-    --color-gray10-1: #{lighten($theme-dark-gray-color, 10%)};
-    --color-gray10-2: #{lighten($theme-dark-gray-color, 20%)};
-    --color-gray10-3: #{lighten($theme-dark-gray-color, 30%)};
-    --color-gray10-4: #{lighten($theme-dark-gray-color, 40%)};
-    --color-gray10-5: #{lighten($theme-dark-gray-color, 50%)};
-    --color-gray10-6: #{lighten($theme-dark-gray-color, 60%)};
-    --color-gray10-7: #{lighten($theme-dark-gray-color, 70%)};
-    --color-gray10-8: #{lighten($theme-dark-gray-color, 80%)};
-    --color-gray10-9: #{lighten($theme-dark-gray-color, 90%)};
-    --color-gray10-10: #{lighten($theme-dark-gray-color, 95%)};
+	&[data-dark] {
+		--color-gray10-0: #{$theme-dark-gray-color};
+		--color-gray10-1: #{lighten($theme-dark-gray-color, 10%)};
+		--color-gray10-2: #{lighten($theme-dark-gray-color, 20%)};
+		--color-gray10-3: #{lighten($theme-dark-gray-color, 30%)};
+		--color-gray10-4: #{lighten($theme-dark-gray-color, 40%)};
+		--color-gray10-5: #{lighten($theme-dark-gray-color, 50%)};
+		--color-gray10-6: #{lighten($theme-dark-gray-color, 60%)};
+		--color-gray10-7: #{lighten($theme-dark-gray-color, 70%)};
+		--color-gray10-8: #{lighten($theme-dark-gray-color, 80%)};
+		--color-gray10-9: #{lighten($theme-dark-gray-color, 90%)};
+		--color-gray10-10: #{lighten($theme-dark-gray-color, 95%)};
 
-    --color-primary5-0: #{$theme-dark-primary-color};
-    --color-primary5-1: #{lighten($theme-dark-primary-color, 5%)};
-    --color-primary5-2: #{lighten($theme-dark-primary-color, 10%)};
-    --color-primary5-3: #{lighten($theme-dark-primary-color, 20%)};
-    --color-primary5-4: #{lighten($theme-dark-primary-color, 30%)};
-    --color-primary5-5: #{lighten($theme-dark-primary-color, 40%)};
+		--color-primary5-0: #{$theme-dark-primary-color};
+		--color-primary5-1: #{lighten($theme-dark-primary-color, 5%)};
+		--color-primary5-2: #{lighten($theme-dark-primary-color, 10%)};
+		--color-primary5-3: #{lighten($theme-dark-primary-color, 20%)};
+		--color-primary5-4: #{lighten($theme-dark-primary-color, 30%)};
+		--color-primary5-5: #{lighten($theme-dark-primary-color, 40%)};
 
-    --color-point5-0: #{$theme-dark-point-color};
-    --color-point5-1: #{lighten($theme-dark-point-color, 5%)};
-    --color-point5-2: #{lighten($theme-dark-point-color, 10%)};
-    --color-point5-3: #{lighten($theme-dark-point-color, 20%)};
-    --color-point5-4: #{lighten($theme-dark-point-color, 30%)};
-    --color-point5-5: #{lighten($theme-dark-point-color, 40%)};
-  }
+		--color-point5-0: #{$theme-dark-point-color};
+		--color-point5-1: #{lighten($theme-dark-point-color, 5%)};
+		--color-point5-2: #{lighten($theme-dark-point-color, 10%)};
+		--color-point5-3: #{lighten($theme-dark-point-color, 20%)};
+		--color-point5-4: #{lighten($theme-dark-point-color, 30%)};
+		--color-point5-5: #{lighten($theme-dark-point-color, 40%)};
+	}
 }
 
 button{

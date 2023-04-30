@@ -1,20 +1,21 @@
 import Head from 'next/head'
 import React from 'react'
 
-type Props = {
-  children: React.ReactNode
-  title?: string
-}
+import classes from './BaseLayout.module.scss'
 
-const Layout: React.FC<Props> = ({ children, title = '호구마 머신' }) => {
+export default function Layout({ children, title = '호구마 머신' }:{
+	children: React.ReactNode
+	title?: string
+}) {
 	return (
 		<>
 			<Head>
 				<title>{title}</title>
 			</Head>
 
-			{children}
+			<div className={`${classes.content}`}>
+				{children}
+			</div>
 		</>
 	)
 }
-export default Layout
