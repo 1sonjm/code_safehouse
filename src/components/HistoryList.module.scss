@@ -1,0 +1,7 @@
+@use "../styles/mixin.scss" as *;
+
+.list{
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, auto));
+}

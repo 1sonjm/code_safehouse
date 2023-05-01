@@ -1,5 +1,6 @@
 import { AddFilled } from '@carbon/icons-react'
-import { Group, Stack, Text } from '@mantine/core'
+import { Stack } from '@mantine/core'
+import dayjs from 'dayjs'
 import Link from 'next/link'
 
 import classes from './HistoryCard.module.scss'
@@ -8,6 +9,8 @@ export interface History {
 	words: string
 	memberCount: number
 	startNumber: number
+	playStep: number
+  playDate?: Date
 }
 
 export default function HistoryCard({ hisotry }: {
@@ -18,18 +21,10 @@ export default function HistoryCard({ hisotry }: {
 			{hisotry!=undefined ?
 				<Link href={`/playground/game/?words=${hisotry.words}&memberCount=${hisotry.memberCount}&startNumber=${hisotry.startNumber}`}>
 					<div className={`${classes.card} ${classes.prev}`}>
-						<Group
-							position="apart" mt="md"
-							mb="xs"
-						>
-							<Text weight={500}>
-								{hisotry.words}
-							</Text>
-						</Group>
-						<Group
-							position="apart" mt="md"
-							mb="xs"
-						>
+						<p className={`${classes.title}`}>
+							{hisotry.words}
+						</p>
+						<section className={`${classes.options}`}>
 							<div className={`${classes.gameOption}`}>
 								<span className={`${classes.label}`}>참여인원</span>
 								<span className={`${classes.value}`}>
@@ -42,10 +37,19 @@ export default function HistoryCard({ hisotry }: {
 									{hisotry.startNumber}
 								</span>
 							</div>
-						</Group>
-						<p>
-							2222-11-11 11:11:11
-						</p>
+							<div className={`${classes.gameOption}`}>
+								<span className={`${classes.label}`}>진행수</span>
+								<span className={`${classes.value}`}>
+									{hisotry.playStep}
+								</span>
+							</div>
+						</section>
+						{hisotry.playDate?
+							<div className={`${classes.date}`}>
+								{dayjs(hisotry.playDate).format('YYYY년 MM월 DD일 hh:mm:ss')}
+							</div>
+							:''
+						}
 					</div>
 				</Link>
 				:

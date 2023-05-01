@@ -20,35 +20,41 @@ export default function HeaderLayout ({}) {
 	return (
 		<>
 			<Header height={HEADER_HEIGHT} className={`${classes.header}`}>
-				<div className={`${classes.siteLink}`}>
-					{siteLinks.map((link) => (
-						<Link
-							key={link.label}
-							href={link.link}
-							className={`${active === link.link ? classes.selected : ''}`}
-							onClick={(event) => {
-								setActive(link.link)
-							}}
-						>
-							{link.label}
+				<div>
+					<section className={`${classes.siteLink}`}>
+						{siteLinks.map((link) => (
+							<Link
+								key={link.label}
+								href={link.link}
+								className={`${active === link.link ? classes.selected : ''}`}
+								onClick={(event) => {
+									setActive(link.link)
+								}}
+							>
+								{link.label}
+							</Link>
+						))
+						}
+					</section>
+					<section className={`${classes.logo}`}>
+						<Link href="/" className={'titleLogo'}>
+							<LogoIcon size={30} />
 						</Link>
-					))
-					}
-				</div>
-				<div className={`${classes.logo}`}>
-					<Link href="/" className={'titleLogo'}>
-						<LogoIcon size={30} />
-					</Link>
-				</div>
-				<div className={`${classes.buttonGroup}`}>
-					<ActionIcon size={30}>
-						<Link href={'https://github.com/1sonjm/HoGuMa_Machine'}>
-							<LogoGithub />
-						</Link>
-					</ActionIcon>
-					<ActionIcon>
-						<DarkModeButton />
-					</ActionIcon>
+					</section>
+					<section className={`${classes.buttonGroup}`}>
+						<ActionIcon size={30}>
+							<Link
+								href={'https://github.com/1sonjm/HoGuMa_Machine'}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<LogoGithub />
+							</Link>
+						</ActionIcon>
+						<ActionIcon>
+							<DarkModeButton />
+						</ActionIcon>
+					</section>
 				</div>
 			</Header>
 		</>
