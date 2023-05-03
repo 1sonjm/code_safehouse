@@ -1,5 +1,6 @@
+import { Switch } from '@mantine/core'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import BaseLayout from '../../components/layouts/BaseLayout'
 import WordSpinner from '../../components/WordSpinner'
@@ -21,13 +22,9 @@ export default function Home() {
 	startNumber = isNaN(startNumber) ? 1 : startNumber
 	// //
 
-	useEffect(()=>{
-		// machine.changeWords(words, memberCount, startNumber)
-	})
-
 	// 호구마 머신 초기화
 	const [machine, setMachine] = useState(new HoGuMaMachine(words, memberCount, startNumber))
-	let rearrangeWords = machine.getRearrangeWords()
+	// let rearrangeWords = machine.getRearrangedWords()
 	let step = machine.getStep()
 	const nextStep = async () => {
 		step = await machine.nextStep()
@@ -35,17 +32,25 @@ export default function Home() {
 			console.log(step, machine.date)
 			setCount(count + 1)
 		}
-		rearrangeWords = machine.getRearrangeWords()
+		// rearrangeWords = machine.getRearrangedWords()
 	}
 	// //
 
 	const [count, setCount] = useState(0)
+	const [isShowOnlyMine, setIsShowOnlyMine] = useState(false)
 
 	return (
 		<BaseLayout title='호구마 게임'>
-			<WordSpinner words={words} step={step}/>
+			<WordSpinner
+				machine={machine}
+				isShowOnlyMine={isShowOnlyMine}
+				step={step}
+			/>
+			<Switch
+				onChange={(event) => setIsShowOnlyMine(event.currentTarget.checked)}
+				label={'내 차례만 보기'}
+			/>
 			<h1>{ count }</h1>
-			<p>{ rearrangeWords.rearrangedWords }</p>
 			<button
 				onClick={nextStep}
 			>

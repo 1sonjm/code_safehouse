@@ -1,6 +1,7 @@
+
 export interface GameHistory {
   gameSetting:GameSetting
-  rearrangedWords:Array<string>
+  rearrangedWords:Array<RearrangedChar>
 }
 
 export interface GameSetting {
@@ -15,6 +16,14 @@ export interface GameStep {
   isMyTurn:boolean
 }
 
+export interface RearrangedChar {
+  index: number
+  char: string
+}
+export interface RearrangedChar2 extends RearrangedChar {
+  isMine: boolean
+}
+
 export default class HoGuMaMachine {
 	date:Date = new Date()
 	history: Array<GameHistory> = []
@@ -24,7 +33,8 @@ export default class HoGuMaMachine {
 		memberCount: 2,
 		startIndex: 0,
 	}
-	rearrangedWords!:Array<string>
+	private checkedWords!:Array<RearrangedChar2>
+	private rearrangedWords!:Array<RearrangedChar>
 	wordsIndex:number = 0
 	count:number = 0
 	isCountUserOnly:boolean = false
@@ -84,7 +94,7 @@ export default class HoGuMaMachine {
 				i -= words.length
 			}
 
-			this.rearrangedWords.push(words[i])
+			this.rearrangedWords.push({char: words[i], index: i})
 			if (this.rearrangedWords.length >= words.length) {
 				const repeat = this.findRepeatingWords(this.rearrangedWords)
 				if (repeat) {
@@ -95,14 +105,39 @@ export default class HoGuMaMachine {
 			i += memberCount
 		}
 
+		this.checkedWordsProcess()
 		this.saveHistory()
+	}
+
+	/**
+   * 재정렬된 단어를 기준으로 제시어에서 차례여부 검증하여 배열구성
+   */
+	private checkedWordsProcess () {
+		const { words } = this.gameSetting
+
+		this.checkedWords = []
+		let wordsIndex = 0
+		let rearrangedWordsIndex = 0
+		while (this.rearrangedWords[rearrangedWordsIndex] || words[wordsIndex]) {
+			const isMine = (wordsIndex === this.rearrangedWords[rearrangedWordsIndex]?.index)
+			this.checkedWords.push({char: words[wordsIndex], index: wordsIndex, isMine})
+
+			if(isMine) {
+				rearrangedWordsIndex += 1
+			}
+
+			wordsIndex += 1
+			if(wordsIndex >= words.length && this.rearrangedWords[rearrangedWordsIndex]) {
+				wordsIndex = 0
+			}
+		}
 	}
 
 	/**
    * 반복되는 단어 추출
    * @returns 재정렬된 단어
    */
-	private findRepeatingWords(targetWords: string[]): string[] | null {
+	private findRepeatingWords(targetWords: Array<RearrangedChar>): Array<RearrangedChar> | null {
 		for (let i = 0; i < targetWords.length; i++) {
 			let checkedWords = targetWords.slice(0, i + 1)
 			let repeated = true
@@ -170,11 +205,24 @@ export default class HoGuMaMachine {
    * 재정렬된 제시어를 반환
    * @returns 재정렬된 단어
    */
-	public getRearrangeWords () {
-		return {
-			gameSetting: this.gameSetting,
-			rearrangedWords: this.rearrangedWords,
-		}
+	public getRearrangedWords () {
+		return this.rearrangedWords
+	}
+
+	/**
+   * 제시어 기준 차례여부를 포함한 배열 반환
+   * @returns 제시어 기준 차례여부를 포함한 배열
+   */
+	public getCheckedWords () {
+		return this.checkedWords
+	}
+
+	/**
+   * 게임 설정값 반환
+   * @returns 게임 설정값
+   */
+	public getSetting () {
+		return this.gameSetting
 	}
 
 	/**
@@ -224,37 +272,4 @@ export default class HoGuMaMachine {
 		return step
 	}
 }
-
-/**
-// TEST
-try {
-  const game = new HoGuMaMachine('떡볶이', 2, 1)
-  game.changeStartIndex(4) // error
-  console.log(game.getRearrangeWords())
-
-  game.changeStartIndex(2)
-  console.log(game.getRearrangeWords())
-
-  game.changeMemberCount(3, 1)
-  console.log(game.getRearrangeWords())
-
-  game.changeWords('호구마')
-  console.log(game.getRearrangeWords())
-
-  game.changeMemberCount(5, 3)
-  console.log(game.getRearrangeWords())
-
-  game.changeWords('호박고구마', 3, 1)
-  console.log(game.getRearrangeWords())
-
-  for (let i=0; i<10; i++) {
-      console.log(game.nextStep())
-  }
-
-  console.log(game.getHistory())
-} catch (error) {
-  console.error('예외처리', error)
-}
-// TEST
-*/
 // TODO - speech api 읽어주는 기능 추가

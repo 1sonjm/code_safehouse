@@ -1,0 +1,33 @@
+@use "../styles/mixin.scss" as *;
+
+.list{
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, auto));
+  .item{
+    height: 3em;
+    background: var(--color-gray10-1);
+    color: var(--color-gray10-10);
+    border-radius: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    &.mine{
+      background: var(--color-primary5-0);
+      color: var(--color-gray10-10);
+    }
+  }
+  .swiper {
+    width: 100%;
+    height: 3em;
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
