@@ -18,7 +18,8 @@ function App({ Component, pageProps }: AppProps) {
 		>
 			<MantineProvider>
 				<AppShell
-					padding="md"
+					padding="0"
+					style={{paddingTop: 'var(--header-height)'}}
 					header={<HeaderLayout />}
 					footer={<FooterLayout />}
 				>

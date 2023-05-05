@@ -1,33 +1,41 @@
 @use "../styles/mixin.scss" as *;
 
-.list{
-  display: grid;
-  gap: 0.8rem;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, auto));
-  .item{
-    height: 3em;
-    background: var(--color-gray10-1);
-    color: var(--color-gray10-10);
-    border-radius: 0.5rem;
-    text-align: center;
-    vertical-align: middle;
-    &.mine{
-      background: var(--color-primary5-0);
-      color: var(--color-gray10-10);
+.targetWords{
+  position: relative;
+  margin: auto;
+
+  .cursor{
+    display: grid;
+    gap: 0.2em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .step{
+      position: absolute;
+      display: inline-block;
+      height: 100%;
+      width: 1.8em;
+      left: 0;
+      border-radius: 0.2rem;
+      transition: 0.2s ease-out transform;
+      border: 0.2rem solid var(--color-primary5-1);
+      &.mine{
+        border: 0.2rem solid var(--color-primary5-5);
+      }
     }
   }
-  .swiper {
-    width: 100%;
-    height: 3em;
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
 
-      /* Center slide text vertically */
+  .text{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1em, auto));
+    gap: 0.2em;
+    .char{
+      background: var(--color-gray10-1);
+      color: var(--color-gray10-10);
+      border-radius: 0.5rem;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
   }
 }

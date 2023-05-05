@@ -1,6 +1,12 @@
 @use "./color.scss" as *;
 @use "./font.scss" as *;
 
+:root{
+  --header-height: 2.5rem;
+  --swiper-theme-color: var(--color-primary5-3) !important;
+  --swiper-pagination-bullet-inactive-color: var(--color-primary5-3) !important;
+}
+
 html,
 body {
 	padding: 0;

@@ -3,8 +3,8 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
+import { useState } from 'react'
 import SwiperCore, { EffectCoverflow, Navigation, Pagination } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
 
 import HoGuMaMachine, { GameStep } from '../lib/HoGuMaMachine'
 import classes from './WordSpinner.module.scss'
@@ -15,41 +15,48 @@ export default function WordSpinner({machine, isShowOnlyMine=false, step}: {
   isShowOnlyMine?: boolean
 	step: GameStep
 }) {
+	const baseWords = machine.getSetting().words
 	const showAll = machine.getCheckedWords()
 	const showMine = showAll.filter((val)=> val.isMine)
 
 	console.log({showAll, showMine})
 
+	const [cursorNow, setCursorNow] = useState(0)
+	const [cursorNext, setCursorNext] = useState(cursorNow + 1)
+
 	return (
 		<>
-			<Swiper
-				navigation
-				cssMode={true}
-				centeredSlides={true}
-				slidesPerView={3}
-				loop={true}
-				spaceBetween={30}
-				grabCursor={true}
-				className={`${classes.list}`}
-				// effect={'coverflow'}
-				// coverflowEffect={{
-				// 	rotate: 5,
-				// 	stretch: 0,
-				// 	depth: 100,
-				// 	modifier: 1,
-				// 	slideShadows: true,
-				// }}
+			<div
+				className={`${classes.targetWords}`}
+				style={{width: `${baseWords.length*2}em`}}
 			>
-				{(isShowOnlyMine? showMine : showAll).map((item, index) => (
-					<SwiperSlide
-						key={index}
-						className={`${classes.item} ${item.isMine?classes.mine:''}`}
-					>
-						<p>{item.char}</p>
-						<p>{item.isMine}</p>
-					</SwiperSlide>
-				))}
-			</Swiper>
+				<section
+					className={`${classes.cursor}`}
+					style={{
+						gridTemplateColumns: `repeat(${baseWords.length}, minmax(1em, auto))`,
+					}}
+				>
+					<i
+						className={`${classes.step}`}
+						style={{transform: `translateX(${cursorNow * 2 + 0.1}em)`}}
+					/>
+					<i
+						className={`${classes.step} ${classes.mine}`}
+						style={{transform: `translateX(${cursorNext * 2 + 0.1}em)`}}
+					/>
+				</section>
+
+				<section className={`${classes.text}`}>
+					{baseWords.split('').map((char, index) => (
+						<span
+							key={index}
+							className={`${classes.char}`}
+						>
+							{char}
+						</span>
+					))}
+				</section>
+			</div>
 		</>
 	)
 }

@@ -1,13 +1,11 @@
 import { LogoGithub } from '@carbon/icons-react'
-import { ActionIcon, Header, rem } from '@mantine/core'
+import { ActionIcon, Header } from '@mantine/core'
 import Link from 'next/link'
 import { useState } from 'react'
 
 import DarkModeButton from '../DarkModeToggle'
 import LogoIcon from '../LogoIcon'
 import classes from './HeaderLayout.module.scss'
-
-const HEADER_HEIGHT = rem(46)
 
 export default function HeaderLayout ({}) {
 	const [siteLinks, setSiteLinks] = useState([
@@ -19,7 +17,7 @@ export default function HeaderLayout ({}) {
 
 	return (
 		<>
-			<Header height={HEADER_HEIGHT} className={`${classes.header}`}>
+			<Header height={'var(--header-height)'} className={`${classes.header}`}>
 				<div>
 					<section className={`${classes.siteLink}`}>
 						{siteLinks.map((link) => (
