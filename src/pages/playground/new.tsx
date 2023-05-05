@@ -19,6 +19,7 @@ export default function Home() {
 	const [words, setWords] = useState('')
 	const [memberCount, setMemberCount] = useState<number | ''>(2)
 	const [startNumber, setStartNumber] = useState<number | ''>(1)
+	const [timeLimit, setTimeLimit] = useState<number | ''>(5)
 
 	const generateNewGame = () => {
 		alert('게임을 생성합니다')
@@ -66,9 +67,18 @@ export default function Home() {
 					min={1}
 				/>
 				<Space h="md" />
+				<NumberInput
+					defaultValue={3}
+					placeholder="1"
+					label="시간제한"
+					value={timeLimit} onChange={setTimeLimit}
+					min={0.1}
+					step={0.1}
+				/>
+				<Space h="md" />
 				<Center>
 					<Button
-						leftIcon={<LogoIcon size={30} />}
+						leftIcon={<LogoIcon size='1.4em' />}
 						onClick={generateNewGame}
 						// disabled={words.length < 1}
 					>

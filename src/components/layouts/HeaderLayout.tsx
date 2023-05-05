@@ -36,7 +36,7 @@ export default function HeaderLayout ({}) {
 					</section>
 					<section className={`${classes.logo}`}>
 						<Link href="/" className={'titleLogo'}>
-							<LogoIcon size={30} />
+							<LogoIcon size='1.8em' />
 						</Link>
 					</section>
 					<section className={`${classes.buttonGroup}`}>

@@ -1,12 +1,11 @@
-import { em } from '@mantine/core'
 import React from 'react'
 
-export default function LogoIcon({ size=24 }: {
-	size: number
+export default function LogoIcon({ size='2em' }: {
+	size: string
 }) {
 	return (
 		<svg
-			width={em(size)}
+			width={size}
 			viewBox="0 0 128 128"
 			xmlns="http://www.w3.org/2000/svg"
 			aria-hidden="true"
