@@ -1,37 +1,23 @@
+# 호구마 머신
+
 [Playground](https://1sonjm.github.io/HoGuMa_Machine/)
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+---
 
-First, run the development server:
+## 목표
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**호구마 머신**은 간단하고 빠른 템포를 가진 도전적인 게임입니다.
+**호구마 머신**은 당신의 사고력과 집중력을 테스트합니다.🤪
+**호구마 머신**은 당신이 호구가 아니라는 것을 증명할 수 있는 기회입니다.
+**호구마 머신**은 당신을 기다리고 있습니다.
+**호구**가 아닌 당신을요.😎
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 규칙
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. ```제시어```를 정합니다. '호박고구마' 처럼요! 어떤 단어도 상관없어요!</li>
+2. ```참여인원```, ```나의 순번```, ```시간 제한```을 설정해주세요.</li>
+3. 순서에 맞춰서 제시어를 번갈아가며 말합니다.🥵 세명이서 두번째 순서라면 '박,마,고,호,구' 를 순서마다 외치면 됩니다!
+4. 상대가 잘못 말하거나, 시간을 초과하면 '**호구마**'를 외치세요! 당신이 눈치챘다면 말이죠.😅 외치지 못했다면 경기는 속행 합니다.
+5. 맞게 외쳤다면 당신의 승리입니다! **즐기세요!**

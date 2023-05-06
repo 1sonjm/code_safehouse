@@ -84,7 +84,7 @@ export default function Home() {
 					</ol>
 				</SwiperSlide>
 				<SwiperSlide className={`${classes.swiperSlide}`}>
-					{/* <iframe
+					<iframe
 						style={{
 							width: '100%',
 							height: '100%',
@@ -95,7 +95,7 @@ export default function Home() {
 						}}
 						src="https://www.youtube-nocookie.com/embed/vgyvy-Jhxjw?controls=0" title="YouTube video player"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					/> */}
+					/>
 				</SwiperSlide>
 			</Swiper>
 		</BaseLayout>
