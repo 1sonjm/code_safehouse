@@ -1,10 +1,6 @@
 const nextConfig = {
-	basePath: '/HoGuMa_Machine',
-	experimental: {
-		appDir: true,
-	},
+	basePath: '/project-name',
 	images: {
-		loader: 'akamai',
 		path: '/',
 	},
 	trailingSlash: true,
