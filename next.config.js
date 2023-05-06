@@ -1,5 +1,5 @@
 const nextConfig = {
-	basePath: '/project-name',
+	basePath: '/',
 	images: {
 		path: '/',
 	},

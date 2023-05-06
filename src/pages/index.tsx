@@ -148,7 +148,7 @@ export function ParallaxBackground() {
 				<Image
 					key={index}
 					className={`${classes.sweetPotato}`}
-					src="/svgs/sweetPotato.svg"
+					src="/HoGuMa_Machine/svgs/sweetPotato.svg"
 					alt="Sweet Potato"
 					width={50}
 					height={50}
@@ -162,7 +162,7 @@ export function ParallaxBackground() {
 			))}
 			<Image
 				className={`${classes.sideLeft}`}
-				src="/svgs/sweetPotatoSideLeft.svg"
+				src="/HoGuMa_Machine/svgs/sweetPotatoSideLeft.svg"
 				alt="Side Left"
 				width={250} height={450}
 			/>
@@ -171,7 +171,7 @@ export function ParallaxBackground() {
 				<Image
 					key={index}
 					className={`${classes.sweetPotato}`}
-					src="/svgs/sweetPotato.svg"
+					src="/HoGuMa_Machine/svgs/sweetPotato.svg"
 					alt="Sweet Potato"
 					width={50} height={50}
 					style={{
@@ -184,7 +184,7 @@ export function ParallaxBackground() {
 			))}
 			<Image
 				className={`${classes.sideRight}`}
-				src="/svgs/sweetPotatoSideRight.svg"
+				src="/HoGuMa_Machine/svgs/sweetPotatoSideRight.svg"
 				alt="Side Right"
 				width={250} height={450}
 			/>
