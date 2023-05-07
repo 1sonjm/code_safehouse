@@ -1,8 +1,5 @@
 const nextConfig = {
-	basePath: '/',
-	images: {
-		path: '/',
-	},
+	basePath: '/HoGuMa_Machine',
 	trailingSlash: true,
 }
 
