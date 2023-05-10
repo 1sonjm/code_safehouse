@@ -2,9 +2,9 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { Kbd } from '@mantine/core'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import ImageWithBasePath from 'src/components/ImageWithBasePath'
-import LogoIcon from 'src/components/LogoIcon'
 import SwiperCore, { Keyboard, Mousewheel, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -61,7 +61,13 @@ export default function Home() {
 						<b>호구마 머신</b>은 당신을 기다리고 있습니다.<br />
 					</p>
 					<p>
-						<LogoIcon size={'3em'} />
+						<Image
+							className='testImage'
+							src="svgs/sweetPotato.svg"
+							alt="Sweet Potato"
+							width={50}
+							height={50}
+						/>
 					</p>
 					<p className='text-center'>
 						<b>호구</b>가 아닌 당신을요.😎
@@ -93,7 +99,7 @@ export default function Home() {
 							padding: '0.5rem',
 							border: '0',
 						}}
-						src="https://www.youtube-nocookie.com/embed/vgyvy-Jhxjw?controls=0" title="YouTube video player"
+						src="https://www.youtube-nocookie.com/embed/vgyvy-Jhxjw" title="YouTube video player"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					/>
 				</SwiperSlide>
