@@ -3,25 +3,36 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SwiperCore, { EffectCoverflow, Navigation, Pagination } from 'swiper'
 
-import HoGuMaMachine from '../lib/HoGuMaMachine'
+import HoGuMaMachine, { GameStep } from '../lib/HoGuMaMachine'
 import classes from './WordSpinner.module.scss'
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow])
-export default function WordSpinner({machine, isShowOnlyMine=false}: {
+export default function WordSpinner({machine, isShowOnlyMine=false, step}: {
   machine: HoGuMaMachine
   isShowOnlyMine?: boolean
+  step: GameStep
 }) {
-	const baseWords = machine.getSetting().words
-	const showAll = machine.getCheckedWords()
-	const showMine = showAll.filter((val)=> val.isMine)
-
-	console.log({showAll, showMine})
+	const setting = machine.getSetting()
+	const [baseWords, setBaseWords] = useState(setting.words)
 
 	const [cursorNow, setCursorNow] = useState(0)
 	const [cursorNext, setCursorNext] = useState(cursorNow + 1)
+	useEffect(() => {
+		if (isShowOnlyMine) {
+			if(step.isMyTurn){
+				setCursorNow((step.totalCount + setting.memberCount) % baseWords.length)
+			}
+			setCursorNext(step.totalCount % baseWords.length)
+		} else {
+			setCursorNow(step.totalCount % baseWords.length)
+			setCursorNext((step.totalCount + 1) % baseWords.length)
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [step])
+
 
 	return (
 		<>
@@ -36,11 +47,11 @@ export default function WordSpinner({machine, isShowOnlyMine=false}: {
 					}}
 				>
 					<i
-						className={`${classes.step}`}
+						className={`${classes.step} ${classes.mine}`}
 						style={{transform: `translateX(${cursorNow * 2 + 0.1}em)`}}
 					/>
 					<i
-						className={`${classes.step} ${classes.mine}`}
+						className={`${classes.step}`}
 						style={{transform: `translateX(${cursorNext * 2 + 0.1}em)`}}
 					/>
 				</section>

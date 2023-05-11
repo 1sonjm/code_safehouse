@@ -1,6 +1,7 @@
 @use "../styles/mixin.scss" as *;
 
 .targetWords{
+  font-size: 2rem;
   position: relative;
   margin: auto;
 
@@ -33,6 +34,7 @@
       background: var(--color-gray10-1);
       color: var(--color-gray10-10);
       border-radius: 0.5rem;
+      width: 1.8em;
       display: flex;
       align-items: center;
       justify-content: center;

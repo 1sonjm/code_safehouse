@@ -1,4 +1,4 @@
-import { Switch } from '@mantine/core'
+import { Container, Switch } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
@@ -31,13 +31,18 @@ export default function Home() {
 	const [machine, setMachine] = useState(new HoGuMaMachine(words, memberCount, startNumber))
 	// let rearrangeWords = machine.getRearrangedWords()
 	let step = machine.getStep()
+	const countRef = useRef<HTMLDivElement>(null)
 	const nextStep = async () => {
 		step = await machine.nextStep()
 		if(step) {
-			console.log(step, machine.date)
 			setCount(count + 1)
+
+			if (countRef.current) {
+				countRef.current.classList.remove(classes.animate)
+				countRef.current.offsetHeight // trigger reflow
+				countRef.current.classList.add(classes.animate)
+			}
 		}
-		// rearrangeWords = machine.getRearrangedWords()
 	}
 	// //
 
@@ -45,27 +50,35 @@ export default function Home() {
 	const [isShowOnlyMine, setIsShowOnlyMine] = useState(false)
 
 	const onTimeEvent = () => {
-		console.log('time event', new Date())
 		nextStep()
 	}
 
 	return (
 		<BaseLayout title='호구마 게임'>
-			<WordSpinner
-				machine={machine}
-				isShowOnlyMine={isShowOnlyMine}
-			/>
-			<Switch
-				onChange={(event) => setIsShowOnlyMine(event.currentTarget.checked)}
-				label={'내 차례만 보기'}
-			/>
-			<GameTimer timeLimit={timeLimit} onTimeEvent={onTimeEvent}/>
-			<h1>{ count }</h1>
-			<button
-				onClick={nextStep}
-			>
-				▶
-			</button>
+			<Container size="50rem">
+				<div className={`${classes.counter}`}>
+					<span ref={countRef}>{ count }</span>
+				</div>
+				<div className={`${classes.gameTimerWrap}`}>
+					<GameTimer timeLimit={timeLimit} onTimeEvent={onTimeEvent}/>
+				</div>
+				<div className={`${classes.wordsWrap}`}>
+					<WordSpinner
+						machine={machine}
+						isShowOnlyMine={isShowOnlyMine}
+						step={step}
+					/>
+					<Switch
+						onChange={(event) => setIsShowOnlyMine(event.currentTarget.checked)}
+						label={'내 차례만 보기'}
+					/>
+				</div>
+				<button
+					onClick={nextStep}
+				>
+					▶
+				</button>
+			</Container>
 		</BaseLayout>
 	)
 }

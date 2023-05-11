@@ -1,5 +1,29 @@
 @use "../../styles/mixin.scss" as *;
 
+.counter{
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .animate{
+    line-height: 0.7em;
+    font-size: 6rem;
+    text-align: center;
+    animation: punch linear forwards 0.2s;
+    @keyframes punch {
+      from{ transform: scale(0.9); }
+      50%{ transform: scale(1.2); }
+      to{ transform: scale(1); }
+    }
+  }
+}
+.gameTimerWrap{
+  margin: 1rem auto;
+}
+.wordsWrap{
+  margin: 1rem auto;
+}
+
 .gameTimer{
   width: 100%;
   height: 1em;
@@ -11,18 +35,16 @@
     position: absolute;
     height: 100%;
     border-radius: 1em;
-    animation: time linear;
-    animation-fill-mode: forwards;
-    animation-duration: 0;
     background-color: var(--color-point5-3);
-  }
-}
-
-@keyframes time {
-  from{
-    width: 0;
-  }
-  to{
-    width: 100%;
+    animation: time linear forwards;
+    animation-duration: 0;
+    @keyframes time {
+      from{
+        width: 0;
+      }
+      to{
+        width: 100%;
+      }
+    }
   }
 }
