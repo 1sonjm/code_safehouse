@@ -54,7 +54,6 @@ export default function Home() {
 			<WordSpinner
 				machine={machine}
 				isShowOnlyMine={isShowOnlyMine}
-				step={step}
 			/>
 			<Switch
 				onChange={(event) => setIsShowOnlyMine(event.currentTarget.checked)}

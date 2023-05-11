@@ -11,6 +11,7 @@ interface Query extends ParsedUrlQueryInput{
 	words?: string,
 	memberCount?: number,
 	startNumber?: number,
+	timeLimit?: number,
 }
 
 export default function Home() {
@@ -32,6 +33,9 @@ export default function Home() {
 		}
 		if (startNumber != '' && startNumber >= 1){
 			query.startNumber = startNumber
+		}
+		if (timeLimit != '' && timeLimit >= 1){
+			query.timeLimit = timeLimit
 		}
 
 		router.push({

@@ -6,14 +6,13 @@ import 'swiper/css/pagination'
 import { useState } from 'react'
 import SwiperCore, { EffectCoverflow, Navigation, Pagination } from 'swiper'
 
-import HoGuMaMachine, { GameStep } from '../lib/HoGuMaMachine'
+import HoGuMaMachine from '../lib/HoGuMaMachine'
 import classes from './WordSpinner.module.scss'
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow])
-export default function WordSpinner({machine, isShowOnlyMine=false, step}: {
+export default function WordSpinner({machine, isShowOnlyMine=false}: {
   machine: HoGuMaMachine
   isShowOnlyMine?: boolean
-	step: GameStep
 }) {
 	const baseWords = machine.getSetting().words
 	const showAll = machine.getCheckedWords()

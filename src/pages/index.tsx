@@ -4,7 +4,6 @@ import 'swiper/css/pagination'
 import { Kbd } from '@mantine/core'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import ImageWithBasePath from 'src/components/ImageWithBasePath'
 import SwiperCore, { Keyboard, Mousewheel, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -151,10 +150,10 @@ export function ParallaxBackground() {
 	return (
 		<>
 			{leftSideSweetPotato.map((value, index) => (
-				<ImageWithBasePath
+				<Image
 					key={index}
 					className={`${classes.sweetPotato}`}
-					src="/svgs/sweetPotato.svg"
+					src="svgs/sweetPotato.svg"
 					alt="Sweet Potato"
 					width={50}
 					height={50}
@@ -166,18 +165,18 @@ export function ParallaxBackground() {
 					}}
 				/>
 			))}
-			<ImageWithBasePath
+			<Image
 				className={`${classes.sideLeft}`}
-				src="/svgs/sweetPotatoSideLeft.svg"
+				src="svgs/sweetPotatoSideLeft.svg"
 				alt="Side Left"
 				width={250} height={450}
 			/>
 
 			{rightSideSweetPotato.map((value, index)=>(
-				<ImageWithBasePath
+				<Image
 					key={index}
 					className={`${classes.sweetPotato}`}
-					src="/svgs/sweetPotato.svg"
+					src="svgs/sweetPotato.svg"
 					alt="Sweet Potato"
 					width={50} height={50}
 					style={{
@@ -188,9 +187,9 @@ export function ParallaxBackground() {
 					}}
 				/>
 			))}
-			<ImageWithBasePath
+			<Image
 				className={`${classes.sideRight}`}
-				src="/svgs/sweetPotatoSideRight.svg"
+				src="svgs/sweetPotatoSideRight.svg"
 				alt="Side Right"
 				width={250} height={450}
 			/>
