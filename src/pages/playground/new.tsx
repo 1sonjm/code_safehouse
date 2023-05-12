@@ -6,6 +6,7 @@ import { useState } from 'react'
 
 import BaseLayout from '../../components/layouts/BaseLayout'
 import LogoIcon from '../../components/LogoIcon'
+import Howl from '../../lib/howler'
 
 interface Query extends ParsedUrlQueryInput{
 	words?: string,
@@ -23,7 +24,8 @@ export default function Home() {
 	const [timeLimit, setTimeLimit] = useState<number | ''>(5)
 
 	const generateNewGame = () => {
-		alert('게임을 생성합니다')
+		Howl('sounds/um_delicias.mp3').play()
+
 		const query: Query = {}
 		if (words?.length){
 			query.words = words

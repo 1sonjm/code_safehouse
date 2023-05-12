@@ -32,6 +32,7 @@
 		"embla-carousel-react": "^7.1.0",
 		"eslint-config-next": "13.3.0",
 		"glob-parent": ">=5.1.2",
+		"howler": "^2.2.3",
 		"next": "13.3.0",
 		"next-optimized-images": "^2.6.2",
 		"postcss": "8.4.21",
@@ -45,6 +46,7 @@
 	},
 	"devDependencies": {
 		"@types/carbon__icons-react": "^11.16.0",
+		"@types/howler": "^2.2.7",
 		"eslint": "^8.39.0",
 		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"eslint-plugin-unused-imports": "^2.0.0",
