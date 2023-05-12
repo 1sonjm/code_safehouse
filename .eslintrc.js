@@ -3,6 +3,7 @@ module.exports = {
 	plugins: [
 		'eslint-plugin-simple-import-sort',
 		'unused-imports',
+		'react-hooks',
 	],
 	ignorePatterns: [
 		'**/node_modules/*.js',
@@ -71,6 +72,9 @@ module.exports = {
 		'react/jsx-max-props-per-line': ['error', { 'maximum': 2 }],
 		// useState hook 값과 setter 변수의 구조 분해 및 대칭 명명을 보장합니다.
 		'react/hook-use-state': 'error',
+
+		// hooks 에 의존성을 가진 객체를 모두 포함합니다
+		'react-hooks/exhaustive-deps': 'warn',
 
 		// 사용자 지정 글꼴 페이지를 허용합니다.
 		'@next/next/no-page-custom-font': 'off',

@@ -30,7 +30,6 @@ export default function WordSpinner({machine, isShowOnlyMine=false, step}: {
 			setCursorNow(step.totalCount % baseWords.length)
 			setCursorNext((step.totalCount + 1) % baseWords.length)
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [step])
 
 
@@ -48,11 +47,11 @@ export default function WordSpinner({machine, isShowOnlyMine=false, step}: {
 				>
 					<i
 						className={`${classes.step} ${classes.mine}`}
-						style={{transform: `translateX(${cursorNow * 2 + 0.1}em)`}}
+						style={{transform: `translateX(${cursorNow * 2.04}em)`}}
 					/>
 					<i
 						className={`${classes.step}`}
-						style={{transform: `translateX(${cursorNext * 2 + 0.1}em)`}}
+						style={{transform: `translateX(${cursorNext * 2.04}em)`}}
 					/>
 				</section>
 

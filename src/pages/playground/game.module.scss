@@ -5,7 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  .animate{
+  .number{
+    color: var(--color-gray10-10);
     line-height: 0.7em;
     font-size: 6rem;
     text-align: center;
@@ -23,6 +24,18 @@
 .wordsWrap{
   margin: 1rem auto;
 }
+.stepButton{
+  border: none;
+  background-color: var(--color-point5-1);
+  color: var(--color-gray10-10);
+  padding: 2em;
+  width: 100%;
+  border-radius: 0.5rem;
+  &:hover{
+    background-color: var(--color-point5-0);
+  }
+}
+
 
 .gameTimer{
   width: 100%;

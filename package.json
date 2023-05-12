@@ -31,7 +31,7 @@
 		"dayjs": "^1.11.7",
 		"embla-carousel-react": "^7.1.0",
 		"eslint-config-next": "13.3.0",
-		"glob-parent": "5.1.2",
+		"glob-parent": ">=5.1.2",
 		"next": "13.3.0",
 		"next-optimized-images": "^2.6.2",
 		"postcss": "8.4.21",

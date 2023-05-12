@@ -1,4 +1,5 @@
-import { Container, Switch } from '@mantine/core'
+import { SkipForwardFilled } from '@carbon/icons-react'
+import { ActionIcon, Container, Switch } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
@@ -38,9 +39,9 @@ export default function Home() {
 			setCount(count + 1)
 
 			if (countRef.current) {
-				countRef.current.classList.remove(classes.animate)
+				countRef.current.classList.remove(classes.number)
 				countRef.current.offsetHeight // trigger reflow
-				countRef.current.classList.add(classes.animate)
+				countRef.current.classList.add(classes.number)
 			}
 		}
 	}
@@ -50,14 +51,19 @@ export default function Home() {
 	const [isShowOnlyMine, setIsShowOnlyMine] = useState(false)
 
 	const onTimeEvent = () => {
-		nextStep()
+		// nextStep()
 	}
 
 	return (
 		<BaseLayout title='호구마 게임'>
 			<Container size="50rem">
 				<div className={`${classes.counter}`}>
-					<span ref={countRef}>{ count }</span>
+					<span
+						ref={countRef}
+						className={`${classes.number}`}
+					>
+						{ count }
+					</span>
 				</div>
 				<div className={`${classes.gameTimerWrap}`}>
 					<GameTimer timeLimit={timeLimit} onTimeEvent={onTimeEvent}/>
@@ -73,11 +79,12 @@ export default function Home() {
 						label={'내 차례만 보기'}
 					/>
 				</div>
-				<button
+				<ActionIcon
 					onClick={nextStep}
+					className={`${classes.stepButton}`}
 				>
-					▶
-				</button>
+					<SkipForwardFilled />
+				</ActionIcon>
 			</Container>
 		</BaseLayout>
 	)
