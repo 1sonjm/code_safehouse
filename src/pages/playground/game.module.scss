@@ -24,15 +24,26 @@
 .wordsWrap{
   margin: 1rem auto;
 }
-.stepButton{
-  border: none;
-  background-color: var(--color-point5-1);
-  color: var(--color-gray10-10);
-  padding: 2em;
-  width: 100%;
-  border-radius: 0.5rem;
-  &:hover{
-    background-color: var(--color-point5-0);
+.buttonGroup{
+  display: flex;
+  &:not(:last-child){
+    margin-bottom: 0.5rem;
+  }
+  .stepButton{
+    flex: 1 1 0;
+    gap: 0.5rem;
+    border: none;
+    background-color: var(--color-point5-1);
+    color: var(--color-gray10-10);
+    padding: 2em;
+    width: 100%;
+    border-radius: 0.5rem;
+    &:hover{
+      background-color: var(--color-point5-0);
+    }
+    &:not(:last-child){
+      margin-right: 0.5rem;
+    }
   }
 }
 

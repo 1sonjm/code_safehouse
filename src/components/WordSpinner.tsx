@@ -10,10 +10,11 @@ import HoGuMaMachine, { GameStep } from '../lib/HoGuMaMachine'
 import classes from './WordSpinner.module.scss'
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow])
-export default function WordSpinner({machine, isShowOnlyMine=false, step}: {
+export default function WordSpinner({machine, isShowOnlyMine=false, step, isGameStart}: {
   machine: HoGuMaMachine
   isShowOnlyMine?: boolean
   step: GameStep
+  isGameStart: boolean
 }) {
 	const setting = machine.getSetting()
 	const [baseWords, setBaseWords] = useState(setting.words)
@@ -31,7 +32,12 @@ export default function WordSpinner({machine, isShowOnlyMine=false, step}: {
 			setCursorNext((step.totalCount + 1) % baseWords.length)
 		}
 	}, [step])
-
+	useEffect(() => {
+		if (isGameStart) {
+			setCursorNow(0)
+			setCursorNext(0)
+		}
+	}, [isGameStart])
 
 	return (
 		<>

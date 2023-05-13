@@ -1,14 +1,19 @@
-import { SkipForwardFilled } from '@carbon/icons-react'
+import { PauseFilled, PlayFilledAlt, Playlist, Restart, SettingsAdjust, SkipForwardFilled, StopFilledAlt } from '@carbon/icons-react'
 import { ActionIcon, Container, Switch } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Transition } from 'react-transition-group'
 
 import BaseLayout from '../../components/layouts/BaseLayout'
 import WordSpinner from '../../components/WordSpinner'
 import HoGuMaMachine from '../../lib/HoGuMaMachine'
+import Howl from '../../lib/howler'
 import classes from './game.module.scss'
 
 export default function Home() {
+	const [movePage, setMovePage] = useState(false)
+	const [isGameStart, setIsGameStart] = useState(false)
+
 	// url query 처리
 	const router = useRouter()
 	const words = (Array.isArray(router.query.words)
@@ -50,51 +55,147 @@ export default function Home() {
 	const [count, setCount] = useState(0)
 	const [isShowOnlyMine, setIsShowOnlyMine] = useState(false)
 
-	const onTimeEvent = () => {
-		// nextStep()
+	const onTimeOver = () => {
+		onGameStop()
 	}
 
+	// button event
+	const onGameStart = async () => {
+		machine.reset()
+		setCount(0)
+		setIsGameStart(true)
+	}
+	const onGameStop = () => {
+		setIsGameStart(false)
+	}
+	const onGamePause = () => {
+		console.log('puase')
+	}
+	const onMoveStep = () => {
+		nextStep()
+	}
+	const onChangeConfig = () => {
+		router.push({
+			pathname: '/playground/new',
+			// query,
+		})
+	}
+	const onMoveHistory = () => {
+		router.push({
+			pathname: '/playground/history',
+		})
+	}
+	// ///
 	return (
 		<BaseLayout title='호구마 게임'>
-			<Container size="50rem">
-				<div className={`${classes.counter}`}>
-					<span
-						ref={countRef}
-						className={`${classes.number}`}
+			<Transition
+				in={!movePage} timeout={1000}
+				appear
+			>
+				{(state)=>(
+					<Container
+						size="50rem"
+						className={`slideFromTop ${state}`}
 					>
-						{ count }
-					</span>
-				</div>
-				<div className={`${classes.gameTimerWrap}`}>
-					<GameTimer timeLimit={timeLimit} onTimeEvent={onTimeEvent}/>
-				</div>
-				<div className={`${classes.wordsWrap}`}>
-					<WordSpinner
-						machine={machine}
-						isShowOnlyMine={isShowOnlyMine}
-						step={step}
-					/>
-					<Switch
-						onChange={(event) => setIsShowOnlyMine(event.currentTarget.checked)}
-						label={'내 차례만 보기'}
-					/>
-				</div>
-				<ActionIcon
-					onClick={nextStep}
-					className={`${classes.stepButton}`}
-				>
-					<SkipForwardFilled />
-				</ActionIcon>
-			</Container>
+						<div className={`${classes.counter}`}>
+							<span
+								ref={countRef}
+								className={`${classes.number}`}
+							>
+								{ count }
+							</span>
+						</div>
+						<div className={`${classes.gameTimerWrap}`}>
+							<GameTimer
+								timeLimit={timeLimit}
+								onTimeOver={onTimeOver}
+								refreshTimer={count}
+								isGameStart={isGameStart}
+							/>
+						</div>
+						<div className={`${classes.wordsWrap}`}>
+							<WordSpinner
+								machine={machine}
+								isShowOnlyMine={isShowOnlyMine}
+								step={step}
+								isGameStart={isGameStart}
+							/>
+							<Switch
+								onChange={(event) => setIsShowOnlyMine(event.currentTarget.checked)}
+								label={'내 차례만 보기'}
+							/>
+						</div>
+						<div className={`${classes.buttonGroup}`}>
+							{isGameStart?
+								<>
+									<ActionIcon
+										onClick={onMoveStep}
+										className={`${classes.stepButton}`}
+									>
+										<SkipForwardFilled />
+									</ActionIcon>
+									<ActionIcon
+										onClick={onGamePause}
+										className={`${classes.stepButton}`}
+									>
+										<PauseFilled />
+									</ActionIcon>
+								</>
+								:
+								<>
+									<ActionIcon
+										onClick={onGameStart}
+										className={`${classes.stepButton}`}
+									>
+										{count > 0 ? <Restart /> : <PlayFilledAlt />}
+									</ActionIcon>
+								</>
+							}
+						</div>
+						<div className={`${classes.buttonGroup}`}>
+							{isGameStart?
+								<>
+									<ActionIcon
+										onClick={onGameStop}
+										className={`${classes.stepButton}`}
+									>
+										<StopFilledAlt />
+									</ActionIcon>
+								</>
+								:
+								<>
+									<ActionIcon
+										onClick={onChangeConfig}
+										className={`${classes.stepButton}`}
+									>
+										<SettingsAdjust />
+									</ActionIcon>
+									<ActionIcon
+										onClick={onMoveHistory}
+										className={`${classes.stepButton}`}
+									>
+										<Playlist />
+									</ActionIcon>
+								</>
+							}
+						</div>
+					</Container>
+				)}
+			</Transition>
 		</BaseLayout>
 	)
 }
 
-function GameTimer({ timeLimit, onTimeEvent }: {
+function GameTimer({ timeLimit, onTimeOver, refreshTimer, isGameStart }: {
 	timeLimit: number
-  onTimeEvent: () => void;
+  onTimeOver: () => void
+  refreshTimer: number
+  isGameStart: boolean
 }) {
+	const sfxHoguma = Howl('sounds/hoguma.mp3')
+	const sfxMoveStep = Howl('sounds/move_step.mp3')
 	const progressRef = useRef<HTMLDivElement>(null)
+	const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>()
 	const restartAnimation = useCallback(() => {
 		if (progressRef.current) {
 			progressRef.current.style.animationDuration = (timeLimit) + 's'
@@ -104,16 +205,30 @@ function GameTimer({ timeLimit, onTimeEvent }: {
 		}
 	}, [timeLimit])
 
-	useEffect(() => {
-		const gameInterval = setInterval(() => {
-			onTimeEvent()
-			restartAnimation()
-		}, timeLimit * 1000)
-		return () => {
-			clearInterval(gameInterval)
-		}
-	}, [restartAnimation, onTimeEvent, timeLimit])
+	const resetTimer = () => {
+		clearTimeout(timeoutId)
+		setTimeoutId(setTimeout(() => {
+			sfxHoguma.play()
+			onTimeOver()
+		}, timeLimit * 1000))
+	}
 
+	// step 이동시, 타이머 리셋
+	useEffect(() => {
+		if(isGameStart){
+			restartAnimation()
+			resetTimer()
+		}
+		return () => {
+		}
+	}, [isGameStart])
+
+	// 타임 아웃 이벤트
+	useEffect(()=>{
+		restartAnimation()
+		resetTimer()
+		sfxMoveStep.play()
+	}, [refreshTimer])
 	return (
 		<>
 			<div className={`${classes.gameTimer}`}>

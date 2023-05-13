@@ -1,6 +1,7 @@
-@use "./color.scss" as *;
-@use "./font.scss" as *;
-@use "./mixin.scss" as *;
+@use './color.scss' as *;
+@use './font.scss' as *;
+@use './mixin.scss' as *;
+@use './transitionPage.scss' as *;
 
 :root{
   --header-height: 2.5rem;
@@ -56,10 +57,9 @@ img {
 }
 .mantine-Button-root{
   @include themeChange;
-  color: var(--color-gray10-10);
   background-color: var(--color-primary5-3);
   &:hover,
   &:active{
-    background-color: var(--color-primary5-2);
+    background-color: var(--color-primary5-4);
   }
 }

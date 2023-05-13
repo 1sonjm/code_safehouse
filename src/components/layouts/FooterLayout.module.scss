@@ -1,6 +1,7 @@
 @use "../../styles/mixin.scss" as *;
 
 .footer {
+  @include themeChange;
   background: var(--color-gray10-1);
   color: var(--color-gray10-4);
   text-align: center;
@@ -11,6 +12,7 @@
     line-height: 1.2em;
   }
   a{
+    @include themeChange;
     color: var(--color-gray10-4);
     font-weight: 600;
   }
