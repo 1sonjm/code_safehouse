@@ -9,6 +9,7 @@ import BaseLayout from '../../components/layouts/BaseLayout'
 import LogoIcon from '../../components/LogoIcon'
 import Howl from '../../lib/howler'
 
+const STORAGE_KEY_HISTORY = process.env.STORAGE_KEY_HISTORY || ''
 export interface Query extends ParsedUrlQueryInput{
 	words?: string,
 	memberCount?: number,
@@ -67,10 +68,19 @@ export default function Home() {
 			query.timeLimit = timeLimit
 		}
 
+		saveHistory(query)
+
 		router.push({
 			pathname: '/playground/game',
 			query,
 		})
+	}
+
+	const saveHistory = (query: Query) => {
+		const item = window.localStorage.getItem(STORAGE_KEY_HISTORY)
+		const historyList = item ? JSON.parse(item) : []
+		historyList.push({...query, playDate: new Date()})
+		window.localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(historyList))
 	}
 
 	const [movePage, setMovePage] = useState(false)

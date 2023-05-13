@@ -1,9 +1,11 @@
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-import { Kbd } from '@mantine/core'
+import { Button, Kbd } from '@mantine/core'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import LogoIcon from 'src/components/LogoIcon'
 import SwiperCore, { Keyboard, Mousewheel, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -60,13 +62,12 @@ export default function Home() {
 						<b>호구마 머신</b>은 당신을 기다리고 있습니다.<br />
 					</p>
 					<p>
-						<Image
-							className='testImage'
-							src="svgs/sweetPotato.svg"
-							alt="Sweet Potato"
-							width={50}
-							height={50}
-						/>
+						<Link href='playground/new'>
+							<Button>
+								<LogoIcon size='1.4em' />
+								시작!
+							</Button>
+						</Link>
 					</p>
 					<p className='text-center'>
 						<b>호구</b>가 아닌 당신을요.😎
