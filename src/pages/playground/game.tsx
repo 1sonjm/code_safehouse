@@ -9,6 +9,7 @@ import WordSpinner from '../../components/WordSpinner'
 import HoGuMaMachine from '../../lib/HoGuMaMachine'
 import Howl from '../../lib/howler'
 import classes from './game.module.scss'
+import { Query } from './new'
 
 export default function Home() {
 	const [movePage, setMovePage] = useState(false)
@@ -75,9 +76,15 @@ export default function Home() {
 		nextStep()
 	}
 	const onChangeConfig = () => {
+		const query: Query = {
+			words,
+			memberCount,
+			startNumber,
+			timeLimit,
+		}
 		router.push({
 			pathname: '/playground/new',
-			// query,
+			query,
 		})
 	}
 	const onMoveHistory = () => {

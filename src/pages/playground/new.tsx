@@ -2,14 +2,14 @@ import { ParsedUrlQueryInput } from 'node:querystring'
 
 import { Button, Center, Container, NumberInput, Space, TextInput } from '@mantine/core'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Transition } from 'react-transition-group'
 
 import BaseLayout from '../../components/layouts/BaseLayout'
 import LogoIcon from '../../components/LogoIcon'
 import Howl from '../../lib/howler'
 
-interface Query extends ParsedUrlQueryInput{
+export interface Query extends ParsedUrlQueryInput{
 	words?: string,
 	memberCount?: number,
 	startNumber?: number,
@@ -23,6 +23,31 @@ export default function Home() {
 	const [memberCount, setMemberCount] = useState<number | ''>(2)
 	const [startNumber, setStartNumber] = useState<number | ''>(1)
 	const [timeLimit, setTimeLimit] = useState<number | ''>(5)
+
+	// step 이동시, 타이머 리셋
+	useEffect(() => {
+		console.log(router.query)
+		setWords(
+			(Array.isArray(router.query.words)
+				? router.query.words[0]
+				: router.query.words) || '호박고구마'
+		)
+		setMemberCount(
+			Number(Array.isArray(router.query.memberCount)
+				? router.query.memberCount[0]
+				: router.query.memberCount || 2)
+		)
+		setStartNumber(
+			Number(Array.isArray(router.query.startNumber)
+				? router.query.startNumber[0]
+				: router.query.startNumber || 1)
+		)
+		setTimeLimit(
+			Number(Array.isArray(router.query.timeLimit)
+				? router.query.timeLimit[0]
+				: router.query.timeLimit || 5)
+		)
+	}, [router.query])
 
 	const generateNewGame = () => {
 		setMovePage(true)
@@ -89,8 +114,8 @@ export default function Home() {
 							placeholder="1"
 							label="시간제한"
 							value={timeLimit} onChange={setTimeLimit}
-							min={0.1}
-							step={0.1}
+							min={1}
+							step={1}
 						/>
 						<Space h="md" />
 						<Center>
