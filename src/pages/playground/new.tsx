@@ -27,7 +27,6 @@ export default function Home() {
 
 	// step 이동시, 타이머 리셋
 	useEffect(() => {
-		console.log(router.query)
 		setWords(
 			(Array.isArray(router.query.words)
 				? router.query.words[0]

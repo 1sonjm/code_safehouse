@@ -25,11 +25,10 @@
   background-size: cover;
   background-position: center;
   transition: 0.5s ease-in transform;
-  // background-image: 'url(https://dummyimage.com/600x1200/8c8c8c/bbbbbb.png)';
   .sweetPotato{
     position: absolute;
     display: inline-block;
-      animation: fall-and-rotate linear infinite;
+    animation: fall-and-rotate linear infinite;
     margin: 0;
   }
   .sideLeft{

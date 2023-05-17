@@ -1,8 +1,10 @@
-import { PauseFilled, PlayFilledAlt, Playlist, Restart, SettingsAdjust, SkipForwardFilled, StopFilledAlt } from '@carbon/icons-react'
+import { PlayFilledAlt, Playlist, Restart, SettingsAdjust, SkipForwardFilled, StopFilledAlt } from '@carbon/icons-react'
 import { ActionIcon, Container, Switch } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Transition } from 'react-transition-group'
+import { useRecoilState } from 'recoil'
+import { mainState } from 'src/state/mainState'
 
 import BaseLayout from '../../components/layouts/BaseLayout'
 import WordSpinner from '../../components/WordSpinner'
@@ -69,9 +71,6 @@ export default function Home() {
 	const onGameStop = () => {
 		setIsGameStart(false)
 	}
-	const onGamePause = () => {
-		console.log('puase')
-	}
 	const onMoveStep = () => {
 		nextStep()
 	}
@@ -118,6 +117,7 @@ export default function Home() {
 								onTimeOver={onTimeOver}
 								refreshTimer={count}
 								isGameStart={isGameStart}
+								movePage={movePage}
 							/>
 						</div>
 						<div className={`${classes.wordsWrap}`}>
@@ -140,12 +140,6 @@ export default function Home() {
 										className={`${classes.stepButton}`}
 									>
 										<SkipForwardFilled />
-									</ActionIcon>
-									<ActionIcon
-										onClick={onGamePause}
-										className={`${classes.stepButton}`}
-									>
-										<PauseFilled />
 									</ActionIcon>
 								</>
 								:
@@ -193,12 +187,14 @@ export default function Home() {
 	)
 }
 
-function GameTimer({ timeLimit, onTimeOver, refreshTimer, isGameStart }: {
+function GameTimer({ timeLimit, onTimeOver, refreshTimer, isGameStart, movePage }: {
 	timeLimit: number
   onTimeOver: () => void
   refreshTimer: number
   isGameStart: boolean
+  movePage: boolean
 }) {
+	const [{isMute}] = useRecoilState(mainState)
 	const sfxHoguma = Howl('sounds/hoguma.mp3')
 	const sfxMoveStep = Howl('sounds/move_step.mp3')
 	const progressRef = useRef<HTMLDivElement>(null)
@@ -215,26 +211,45 @@ function GameTimer({ timeLimit, onTimeOver, refreshTimer, isGameStart }: {
 	const resetTimer = () => {
 		clearTimeout(timeoutId)
 		setTimeoutId(setTimeout(() => {
-			sfxHoguma.play()
+			console.log(new Date())
+			clearTimeout(timeoutId)
+			if(!isMute){
+				sfxHoguma.play()
+			}
 			onTimeOver()
 		}, timeLimit * 1000))
 	}
 
-	// step 이동시, 타이머 리셋
+	// 타임 아웃 이벤트
 	useEffect(() => {
-		if(isGameStart){
+		if (isGameStart) {
 			restartAnimation()
 			resetTimer()
+		} else {
+			clearTimeout(timeoutId)
 		}
 		return () => {
+			clearTimeout(timeoutId)
 		}
 	}, [isGameStart])
 
 	// 타임 아웃 이벤트
+	useEffect(() => {
+		clearTimeout(timeoutId)
+	}, [movePage])
+
+	// step 이동시, 타이머 리셋
 	useEffect(()=>{
-		restartAnimation()
-		resetTimer()
-		sfxMoveStep.play()
+		if (isGameStart) {
+			restartAnimation()
+			resetTimer()
+			if(!isMute){
+				sfxMoveStep.play()
+			}
+		}
+		return () => {
+			clearTimeout(timeoutId)
+		}
 	}, [refreshTimer])
 	return (
 		<>
@@ -244,6 +259,7 @@ function GameTimer({ timeLimit, onTimeOver, refreshTimer, isGameStart }: {
 					className={`${classes.progress}`}
 					style={{
 						animationDuration: `${timeLimit}s`,
+						animationPlayState: `${isGameStart?'running':'paused'}`,
 					}}
 				/>
 			</div>

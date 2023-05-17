@@ -1,7 +1,9 @@
-import { LogoGithub } from '@carbon/icons-react'
+import { LogoGithub, VolumeMute, VolumeUpFilled } from '@carbon/icons-react'
 import { ActionIcon, Header } from '@mantine/core'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { mainState } from 'src/state/mainState'
 
 import DarkModeButton from '../DarkModeToggle'
 import LogoIcon from '../LogoIcon'
@@ -14,6 +16,7 @@ export default function HeaderLayout ({}) {
 		{ label: '진행이력', link: '/playground/history' },
 	])
 	const [active, setActive] = useState(siteLinks[0].link)
+	const [{isMute}, setMain] = useRecoilState(mainState)
 
 	return (
 		<>
@@ -48,6 +51,19 @@ export default function HeaderLayout ({}) {
 							>
 								<LogoGithub />
 							</Link>
+						</ActionIcon>
+						<ActionIcon
+							onClick={(event)=> setMain((prev) => ({
+								...prev,
+								isMute: !isMute,
+							}))}
+						>
+							{
+								isMute?
+									<VolumeMute />
+									:
+									<VolumeUpFilled />
+							}
 						</ActionIcon>
 						<ActionIcon>
 							<DarkModeButton />
