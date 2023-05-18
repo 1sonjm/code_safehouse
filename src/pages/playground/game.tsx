@@ -198,7 +198,7 @@ function GameTimer({ timeLimit, onTimeOver, refreshTimer, isGameStart, movePage 
 	const sfxHoguma = Howl('sounds/hoguma.mp3')
 	const sfxMoveStep = Howl('sounds/move_step.mp3')
 	const progressRef = useRef<HTMLDivElement>(null)
-	const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>()
+	const [timeoutId, setTimeoutId] = useState<Array<NodeJS.Timeout>>([])
 	const restartAnimation = useCallback(() => {
 		if (progressRef.current) {
 			progressRef.current.style.animationDuration = (timeLimit) + 's'
@@ -208,47 +208,54 @@ function GameTimer({ timeLimit, onTimeOver, refreshTimer, isGameStart, movePage 
 		}
 	}, [timeLimit])
 
-	const resetTimer = () => {
-		clearTimeout(timeoutId)
-		setTimeoutId(setTimeout(() => {
-			console.log(new Date())
-			clearTimeout(timeoutId)
+	const resetTimeout = () => {
+		timeoutId.push(setTimeout(() => {
+			clearAllTimeout()
 			if(!isMute){
 				sfxHoguma.play()
 			}
 			onTimeOver()
 		}, timeLimit * 1000))
 	}
+	const clearAllTimeout = () => {
+		for(const timer of timeoutId){
+			clearTimeout(timer)
+		}
+	}
 
 	// 타임 아웃 이벤트
 	useEffect(() => {
 		if (isGameStart) {
 			restartAnimation()
-			resetTimer()
+			clearAllTimeout()
+			resetTimeout()
 		} else {
-			clearTimeout(timeoutId)
+			clearAllTimeout()
 		}
 		return () => {
-			clearTimeout(timeoutId)
+			clearAllTimeout()
 		}
 	}, [isGameStart])
 
 	// 타임 아웃 이벤트
 	useEffect(() => {
-		clearTimeout(timeoutId)
+		clearAllTimeout()
 	}, [movePage])
 
 	// step 이동시, 타이머 리셋
 	useEffect(()=>{
 		if (isGameStart) {
 			restartAnimation()
-			resetTimer()
+			clearAllTimeout()
+			resetTimeout()
 			if(!isMute){
 				sfxMoveStep.play()
 			}
+		} else {
+			clearAllTimeout()
 		}
 		return () => {
-			clearTimeout(timeoutId)
+			clearAllTimeout()
 		}
 	}, [refreshTimer])
 	return (

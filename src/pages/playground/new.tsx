@@ -4,6 +4,8 @@ import { Button, Center, Container, NumberInput, Space, TextInput } from '@manti
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { Transition } from 'react-transition-group'
+import { useRecoilState } from 'recoil'
+import { mainState } from 'src/state/mainState'
 
 import BaseLayout from '../../components/layouts/BaseLayout'
 import LogoIcon from '../../components/LogoIcon'
@@ -19,6 +21,7 @@ export interface Query extends ParsedUrlQueryInput{
 
 export default function Home() {
 	const router = useRouter()
+	const [{isMute}] = useRecoilState(mainState)
 
 	const [words, setWords] = useState('')
 	const [memberCount, setMemberCount] = useState<number | ''>(2)
@@ -51,7 +54,9 @@ export default function Home() {
 
 	const generateNewGame = () => {
 		setMovePage(true)
-		Howl('sounds/um_delicias.mp3').play()
+		if(!isMute){
+			Howl('sounds/um_delicias.mp3').play()
+		}
 
 		const query: Query = {}
 		if (words?.length){

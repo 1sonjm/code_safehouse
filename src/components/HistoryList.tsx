@@ -50,7 +50,7 @@ export function HistoryCard({ hisotry }: {
 	return (
 		<>
 			{hisotry!=undefined ?
-				<Link href={`/playground/game/?words=${hisotry.words}&memberCount=${hisotry.memberCount}&startNumber=${hisotry.startNumber}`}>
+				<Link href={`/playground/game/?words=${hisotry.words}&memberCount=${hisotry.memberCount}&startNumber=${hisotry.startNumber}&timeLimit=${hisotry.timeLimit}`}>
 					<div className={`${classes.card} ${classes.prev}`}>
 						<p className={`${classes.title}`}>
 							{hisotry.words}
