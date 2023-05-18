@@ -40,6 +40,7 @@ export default function Home() {
 				className={`${classes.swiper}`}
 				style={{
 					height: '100vh',
+					width: '100%',
 				}}
 				onSwiper={handleSwiper}
 				onSlideChange={handleTouchMove}
@@ -126,7 +127,7 @@ export function ParallaxBackground() {
 
 	useEffect(() => {
 		setLeftSideSweetPotato(
-			Array.from({ length: 4 }, () => {
+			Array.from({ length: 5 }, () => {
 				return {
 					top: `${randomRange(1, 5)}%`,
 					left: `${randomRange(-1, 10)}%`,
@@ -136,7 +137,7 @@ export function ParallaxBackground() {
 			})
 		)
 		setRightSideSweetPotato(
-			Array.from({ length: 4 }, () => {
+			Array.from({ length: 5 }, () => {
 				return {
 					top: `${randomRange(1, 5)}%`,
 					right: `${randomRange(-1, 10)}%`,
