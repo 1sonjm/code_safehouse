@@ -1,8 +1,8 @@
 const nextConfig = {
-	basePath: '/HoGuMa_Machine',
+	basePath: '/code_safehouse',
 	trailingSlash: true,
 	env: {
-		NEXT_PUBLIC_BASE_PATH: '/HoGuMa_Machine',
+		NEXT_PUBLIC_BASE_PATH: '/code_safehouse',
 		STORAGE_KEY_HISTORY: 'historyList',
 	},
 }

@@ -14,7 +14,7 @@ interface ProjectInfo {
 export default function Home() {
 	const gameProejctList: Array<ProjectInfo> = [
 		{name: '호구마 게임', link: 'hoguma', icon: 'svgs/sweetPotato.svg'},
-		{name: '스펀지밥 타이머', link: 'spongeTimer'},
+		{name: '스펀지밥 타이머', link: 'spongebobTimer'},
 	]
 
 	return (
