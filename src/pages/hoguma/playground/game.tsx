@@ -6,10 +6,10 @@ import { Transition } from 'react-transition-group'
 import { useRecoilState } from 'recoil'
 import { mainState } from 'src/state/mainState'
 
-import BaseLayout from '../../components/layouts/BaseLayout'
-import WordSpinner from '../../components/WordSpinner'
-import HoGuMaMachine from '../../lib/HoGuMaMachine'
-import Howl from '../../lib/howler'
+import BaseLayout from '../../../components/hoguma/layouts/BaseLayout'
+import WordSpinner from '../../../components/hoguma/WordSpinner'
+import HoGuMaMachine from '../../../lib/HoGuMaMachine'
+import Howl from '../../../lib/howler'
 import classes from './game.module.scss'
 import { Query } from './new'
 
@@ -82,13 +82,13 @@ export default function Home() {
 			timeLimit,
 		}
 		router.push({
-			pathname: '/playground/new',
+			pathname: '/hoguma/playground/new',
 			query,
 		})
 	}
 	const onMoveHistory = () => {
 		router.push({
-			pathname: '/playground/history',
+			pathname: '/hoguma/playground/history',
 		})
 	}
 	// ///

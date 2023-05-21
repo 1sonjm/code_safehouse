@@ -2,8 +2,9 @@ import Head from 'next/head'
 import React from 'react'
 
 import classes from './BaseLayout.module.scss'
+import HeaderLayout from './HeaderLayout'
 
-export default function Layout({ children, title = 'sonjm playground' }:{
+export default function Layout({ children, title = '호구마 머신' }:{
 	children: React.ReactNode
 	title?: string
 }) {
@@ -12,6 +13,8 @@ export default function Layout({ children, title = 'sonjm playground' }:{
 			<Head>
 				<title>{title}</title>
 			</Head>
+
+			<HeaderLayout />
 
 			<div className={`${classes.content}`}>
 				{children}

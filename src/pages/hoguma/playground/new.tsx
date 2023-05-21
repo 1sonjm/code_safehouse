@@ -7,9 +7,9 @@ import { Transition } from 'react-transition-group'
 import { useRecoilState } from 'recoil'
 import { mainState } from 'src/state/mainState'
 
-import BaseLayout from '../../components/layouts/BaseLayout'
-import LogoIcon from '../../components/LogoIcon'
-import Howl from '../../lib/howler'
+import BaseLayout from '../../../components/hoguma/layouts/BaseLayout'
+import LogoIcon from '../../../components/hoguma/LogoIcon'
+import Howl from '../../../lib/howler'
 
 const STORAGE_KEY_HISTORY = process.env.STORAGE_KEY_HISTORY || ''
 export interface Query extends ParsedUrlQueryInput{
@@ -75,7 +75,7 @@ export default function Home() {
 		saveHistory(query)
 
 		router.push({
-			pathname: '/playground/game',
+			pathname: '/hoguma/playground/game',
 			query,
 		})
 	}

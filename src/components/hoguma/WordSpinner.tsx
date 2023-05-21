@@ -6,7 +6,7 @@ import 'swiper/css/pagination'
 import { useEffect, useState } from 'react'
 import SwiperCore, { EffectCoverflow, Navigation, Pagination } from 'swiper'
 
-import HoGuMaMachine, { GameStep } from '../lib/HoGuMaMachine'
+import HoGuMaMachine, { GameStep } from '../../lib/HoGuMaMachine'
 import classes from './WordSpinner.module.scss'
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow])

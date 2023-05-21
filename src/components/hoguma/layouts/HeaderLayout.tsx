@@ -5,15 +5,15 @@ import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { mainState } from 'src/state/mainState'
 
-import DarkModeButton from '../DarkModeToggle'
+import DarkModeButton from '../../DarkModeToggle'
 import LogoIcon from '../LogoIcon'
 import classes from './HeaderLayout.module.scss'
 
 export default function HeaderLayout ({}) {
 	const [siteLinks, setSiteLinks] = useState([
-		{ label: '소개', link: '/' },
-		{ label: '게임', link: '/playground/new' },
-		{ label: '진행이력', link: '/playground/history' },
+		{ label: '소개', link: '/hoguma/' },
+		{ label: '게임', link: '/hoguma/playground/new' },
+		{ label: '진행이력', link: '/hoguma/playground/history' },
 	])
 	const [active, setActive] = useState(siteLinks[0].link)
 	const [{isMute}, setMain] = useRecoilState(mainState)

@@ -1,7 +1,7 @@
 import { Container } from '@mantine/core'
 
-import HistoryList from '../../components/HistoryList'
-import BaseLayout from '../../components/layouts/BaseLayout'
+import HistoryList from '../../../components/hoguma/HistoryList'
+import BaseLayout from '../../../components/hoguma/layouts/BaseLayout'
 
 export default function Home() {
 
